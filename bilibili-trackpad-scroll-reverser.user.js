@@ -14,9 +14,6 @@
   "use strict";
   const isFullScreen = () => !!document.fullscreenElement;
   const isTrackpad = (wheelEvent) => wheelEvent.deltaY && Math.abs(wheelEvent.deltaY) < 100;
-  const player = document.querySelector("#playerWrap");
-  if (player === null)
-    throw new Error("Can not detect player");
   const orgin = EventTarget.prototype.addEventListener;
   const applyHandler = (target, thisArg, args) => {
     const [type, evt, ...rest] = args;
