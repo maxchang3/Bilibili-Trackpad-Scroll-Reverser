@@ -44,13 +44,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: "Build"
+      - name: Build
         run: |
           pnpm build
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - ame: Release
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.ACCESS_TOKEN }}"
           prerelease: false
           files: |
             dist/*
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: dist
