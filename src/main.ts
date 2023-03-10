@@ -1,9 +1,5 @@
 import { isFullScreen, isTrackpad } from "./utils"
 
-const player = document.querySelector<HTMLElement>('#playerWrap')
-
-if (player === null) throw new Error('Can not detect player')
-
 const orgin = EventTarget.prototype.addEventListener
 
 type AddEventListener = typeof orgin
