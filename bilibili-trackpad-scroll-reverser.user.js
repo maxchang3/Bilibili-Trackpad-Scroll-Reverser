@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       哔哩哔哩反转触控板
 // @namespace  http://zhangmaimai.com/
-// @version    2.0.1
+// @version    2.0.2
 // @author     MaxChang3
 // @license    MIT
 // @icon       https://www.bilibili.com/favicon.ico
