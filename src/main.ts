@@ -14,7 +14,11 @@ interface EventListener<T extends Event> {
 
 const applyHandler = <T extends AddEventListener>(target: T, thisArg: EventTarget, args: Parameters<T>) => {
   const [type, evt, ...rest] = args
-  if (thisArg instanceof HTMLElement || !(evt instanceof Function) || type !== "mousewheel") return Reflect.apply(target, thisArg, args)
+  if ( 
+    thisArg instanceof HTMLElement ||
+    !(evt instanceof Function) ||
+    (type !== "mousewheel" && type !== "wheel")
+  ) return Reflect.apply(target, thisArg, args)
   const evtWrapper: EventListener<WheelEvent> = (e) => {
     if (!isFullScreen() || !isTrackpad(e)) return Reflect.apply(evt, thisArg, [e])
     const proxy = new Proxy(e, {
