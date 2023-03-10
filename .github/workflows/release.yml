@@ -48,7 +48,7 @@ jobs:
         run: |
           pnpm build
 
-      - ame: Release
+      - name: Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.ACCESS_TOKEN }}"
