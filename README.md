@@ -2,12 +2,14 @@
   <img  src="./assets/logo.gif" width = "50%">
 </p>
 
-# 哔哩哔哩触控板滑动反转
+# 哔哩哔哩触控板滚动反转
 # Bilibili-Trackpad-Scroll-Reverser
 
-优化b站视频音量调节在触控板上的体验。
+> 自然滚动下，音量的调节应该也是自然的。
 
-自然滚动下，音量的调节应该也是自然的.
+优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
+
+一般情况下，触控板的滚动语义是这样的：向上滚动时候，其意味着「展示下面的信息」。由于这种操作和现实的逻辑相同，也被称为自然滚动。而鼠标则是向上滚动则意味着「回到上方的信息」。然而，在音量调节的时候二者的语义则得到了统一：「向上就是升高，向下就是降低」。由此则需要判断是否为触控板，再对其进行不同的处理。不过由于目前浏览器的 API 所限，目前仍然没有可以完美区别触控板和鼠标的方式。
 
 ## 安装
 
@@ -16,6 +18,7 @@
 [Release](https://github.com/MaxChang3/Bilibili-Trackpad-Scroll-Reverser/releases/latest/download/bilibili-trackpad-scroll-reverser.user.js)
 
 ## 原理
+
 Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事件。~~（为什么不用 `wheel`！）~~
 
 判断是否为触控板，添加代理拦截 [wheelDelta](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousewheel_event) 值，取相反数（这里直接取 `deltaY` 后做一定计算处理，他与 `wheelDelta` 正负相异）后返回。
