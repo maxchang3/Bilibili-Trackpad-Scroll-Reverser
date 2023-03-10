@@ -18,12 +18,14 @@ jobs:
         uses: actions/setup-node@v3.6.0
         with:
           node-version: 18
+
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
         with:
           version: 7
           run_install: false
+          
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
@@ -46,7 +48,7 @@ jobs:
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          repo_token: "${{ secrets.ACCESS_TOKEN }}"
           prerelease: false
           files: |
             dist/*
