@@ -34,6 +34,9 @@ Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事�
 - 使用 Proxy 重构
 - 修改全屏判断逻辑
 
+<details>
+<summary>2.0 前更新日志</summary>
+
 ### 1.0	
 2022年8月27日	
 - 整理代码
@@ -62,3 +65,5 @@ Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事�
 2021年9月22日 - 2021年9月23日 
 
 - 项目基本功能和完善
+</details>
+
