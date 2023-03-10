@@ -1,5 +1,5 @@
 <p align="center">
-  <img  src="./assets/logo.gif" >
+  <img  src="./assets/logo.gif" width = "50%">
 </p>
 
 # 哔哩哔哩触控板滑动反转
