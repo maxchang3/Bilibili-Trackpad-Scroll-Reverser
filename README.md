@@ -29,7 +29,7 @@ Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事�
 ### 2.0
 2023年3月10日
 - 移植到 TypeScript
-- 使用 vite-plugin-monkey 进行工程化开发
+- 使用 [vite-plugin-monkey](https://github.com/lisonge/vite-plugin-monkey) 进行工程化开发
 - 直接 Hook 事件监听，无需手工添加元素
 - 使用 Proxy 重构
 - 修改全屏判断逻辑
