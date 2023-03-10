@@ -18,13 +18,13 @@
 ## 原理
 Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事件。~~（为什么不用 `wheel`！）~~
 
-判断是否为触控板，添加代理事件，`delta` 值取相反数。
+判断是否为触控板，添加代理拦截 [wheelDelta](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousewheel_event) 值，取相反数（这里直接取 `deltaY` 后做一定计算处理，他与 `wheelDelta` 正负相异）后返回。
 
 ## 已知问题
 
-触控板判断逻辑存在缺陷，粗暴地认为 `delta` 值低于 100 的为触控板。仅对于细微调节和稍微大的调节适用。移动过快时，会导致判断中间出错。
+触控板判断逻辑存在缺陷，粗暴地认为 [deltaY](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent/deltaY) 值低于 100 的为触控板。仅对于细微调节和稍微大的调节适用。移动过快时，会导致判断中间出错。
 
-例如：对于有移动惯性设计的触控板/系统（例如 MacBook、Magic Trackpad），首先由于移动过快，`delta` 值非常高，会认为非触控板，随后由于惯性设计，会在 `delta` 值衰减到较小值后重回回到触控板的判断区间，则最后结果是正确的（静音或者音量 100%+）。
+例如：对于有惯性设计的触控板/系统（例如 MacBook、Magic Trackpad），首先由于移动过快，`deltaY` 值非常高，会认为非触控板，随后由于惯性设计，会在 `deltaY` 值衰减到较小值后重回回到触控板的判断区间，则最后结果是正确的（静音或者音量 100%+）。
 
 ## 更新日志
 
