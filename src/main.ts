@@ -20,7 +20,7 @@ const applyHandler = <T extends AddEventListener>(target: T, thisArg: EventTarge
     const proxy = new Proxy(e, {
       get: (obj, prop) => (typeof prop === "symbol" || prop !== "wheelDelta")
         ? Reflect.get(obj, prop)
-        : obj['deltaY'] * 10 // Considering that `wheelDelta` is deprecated
+        : Reflect.get(obj, 'deltaY') * 10 // Considering that `wheelDelta` is deprecated
     })
     return Reflect.apply(evt, thisArg, [proxy])
   }
