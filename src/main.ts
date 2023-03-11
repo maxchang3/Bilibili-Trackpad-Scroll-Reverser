@@ -1,14 +1,12 @@
 import { isFullScreen, isTrackpad } from "./utils"
 
-const orgin = EventTarget.prototype.addEventListener
-
-type AddEventListener = typeof orgin
-
 interface EventListener<T extends Event> {
   (evt: T): void
 }
 
-const applyHandler = <T extends AddEventListener>(target: T, thisArg: EventTarget, args: Parameters<T>) => {
+const orgin = EventTarget.prototype.addEventListener
+
+const applyHandler = <T extends typeof orgin>(target: T, thisArg: EventTarget, args: Parameters<T>) => {
   const [type, evt, ...rest] = args
   if ( 
     thisArg instanceof HTMLElement ||
