@@ -5,6 +5,9 @@ declare global {
             getVolume(): number,
             play(): void,
             pause(): void,
+            isPaused(): boolean,
+            setAutoplay(e: boolean): void,
+            getAutoplay(): boolean,
             auxiliary: {
                 closeTabList: () => void,
                 disableUserSwitching: () => void,
@@ -49,7 +52,7 @@ declare global {
             tooltip: {
                 create: () => void,
                 remove: () => void,
-                update: ()=> void,
+                update: () => void,
             },
             track: {
                 getAudioId: () => void,
@@ -60,4 +63,4 @@ declare global {
     }
 }
 
-export {}
+export { }

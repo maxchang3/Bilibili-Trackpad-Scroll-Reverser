@@ -2,6 +2,8 @@ import { $$ } from "./utils/element"
 import { Popup } from "./utils/popup"
 import { getMouseMinDelta, setMouseMinDelta } from "./utils/data"
 
+let oldAutoPlayStatus: boolean
+
 const once = <A extends any[], R, T>(
     fn: (this: T, ...arg: A) => R
 ): ((this: T, ...arg: A) => R | undefined) => {
@@ -15,6 +17,7 @@ const setMinDelta = (popup: Popup, delta: number) => {
     setMouseMinDelta(delta)
     alert(`已经设置为【${getMouseMinDelta()}】`)
     popup.closeModal()
+    window.player.setAutoplay(oldAutoPlayStatus)
     location.reload()
 }
 
@@ -77,7 +80,8 @@ export const setupInitPopup = () => {
     document.body.insertAdjacentElement('afterbegin', popup.element)
     popup.element.showModal()
     window.onload = () => {
-        window.player.pause()
+        oldAutoPlayStatus = window.player.getAutoplay()
+        window.player.setAutoplay(false)
         document.body.style.overflow = 'hidden'
     }
 }
