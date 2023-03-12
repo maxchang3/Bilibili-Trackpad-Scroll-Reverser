@@ -1,14 +1,16 @@
 // ==UserScript==
 // @name         哔哩哔哩触控板滚动反转
 // @namespace    http://zhangmaimai.com/
-// @version      2.0.4
+// @version      2.0.5
 // @author       MaxChang3
-// @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，        在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
+// @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
 // @license      MIT
 // @icon         https://www.bilibili.com/favicon.ico
 // @match        https://www.bilibili.com/bangumi/play/*
 // @match        https://www.bilibili.com/video/*
+// @grant        GM_deleteValue
 // @grant        GM_getValue
+// @grant        GM_registerMenuCommand
 // @grant        GM_setValue
 // @run-at       document-start
 // ==/UserScript==
@@ -21,6 +23,45 @@ var __publicField = (obj, key, value) => {
 };
 (function() {
   "use strict";
+  var monkeyWindow = window;
+  var GM_setValue = /* @__PURE__ */ (() => monkeyWindow.GM_setValue)();
+  var GM_deleteValue = /* @__PURE__ */ (() => monkeyWindow.GM_deleteValue)();
+  var GM_registerMenuCommand = /* @__PURE__ */ (() => monkeyWindow.GM_registerMenuCommand)();
+  var GM_getValue = /* @__PURE__ */ (() => monkeyWindow.GM_getValue)();
+  const getMouseMinDelta = () => GM_getValue("MOUSE_MIN", void 0);
+  const setMouseMinDelta = (number) => GM_setValue("MOUSE_MIN", number);
+  const deleteMouseMinDelta = () => GM_deleteValue("MOUSE_MIN");
+  const MOUSE_MIN = getMouseMinDelta() || 100;
+  console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] MOUSE_MIN: ${MOUSE_MIN}`);
+  const isFullScreen = () => !!document.fullscreenElement;
+  const isTrackpad = (wheelEvent) => {
+    return Math.abs(wheelEvent.deltaY) < MOUSE_MIN || Math.abs(wheelEvent.deltaY) > MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2);
+  };
+  const orgin = EventTarget.prototype.addEventListener;
+  const applyHandler = (target, thisArg, args) => {
+    const [type, evt, ...rest] = args;
+    if (thisArg instanceof HTMLElement || !(evt instanceof Function) || type !== "mousewheel" && type !== "wheel")
+      return Reflect.apply(target, thisArg, args);
+    const evtWrapper = (e) => {
+      if (!isFullScreen() || !isTrackpad(e))
+        return Reflect.apply(evt, thisArg, [e]);
+      const proxy = new Proxy(e, {
+        get: (obj, prop) => typeof prop === "symbol" || prop !== "wheelDelta" ? Reflect.get(obj, prop) : Reflect.get(obj, "deltaY") * 10
+        // Considering that `wheelDelta` is deprecated
+      });
+      return Reflect.apply(evt, thisArg, [proxy]);
+    };
+    return Reflect.apply(target, thisArg, [type, evtWrapper, ...rest]);
+  };
+  const setupHook = () => {
+    EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler });
+  };
+  const registerMenus = () => {
+    GM_registerMenuCommand("重置设置", () => {
+      deleteMouseMinDelta();
+      location.reload();
+    });
+  };
   class ChainableDOM {
     constructor(tagName, options) {
       __publicField(this, "element");
@@ -57,11 +98,6 @@ var __publicField = (obj, key, value) => {
     }
   }
   const $$ = (tagName, options) => new ChainableDOM(tagName, options);
-  var monkeyWindow = window;
-  var GM_setValue = /* @__PURE__ */ (() => monkeyWindow.GM_setValue)();
-  var GM_getValue = /* @__PURE__ */ (() => monkeyWindow.GM_getValue)();
-  const getMouseMinDelta = () => GM_getValue("MOUSE_MIN", void 0);
-  const setMouseMinDelta = (number) => GM_setValue("MOUSE_MIN", number);
   class Popup extends HTMLElement {
     constructor() {
       super();
@@ -126,10 +162,18 @@ var __publicField = (obj, key, value) => {
       });
     }
   }
+  let oldAutoPlayStatus;
+  const once = (fn) => {
+    let done = false;
+    return function(...args) {
+      return done ? void 0 : (done = true, fn.apply(this, args));
+    };
+  };
   const setMinDelta = (popup, delta) => {
     setMouseMinDelta(delta);
     alert(`已经设置为【${getMouseMinDelta()}】`);
     popup.closeModal();
+    window.player.setAutoplay(oldAutoPlayStatus);
     location.reload();
   };
   const setupInitPopup = () => {
@@ -141,7 +185,7 @@ var __publicField = (obj, key, value) => {
       setMinDelta(popup.element, 100);
     });
     const easyBox = $$("h3").setInnerText("（直接使用，默认 deltaY 100 以下为触控板）").insert(easy, "afterbegin");
-    const calibrate = $$("button").setInnerText("校准").setAttribute("class", "default-btn").on("click", () => {
+    const calibrate = $$("button").setInnerText("校准").setAttribute("class", "default-btn").on("click", once(() => {
       let MOUSE_MIN2 = Infinity;
       const minDelta = $$("u");
       const minDeltaInfo = $$("h1").setInnerText("最小 |deltaY| ").insert(minDelta);
@@ -162,7 +206,7 @@ var __publicField = (obj, key, value) => {
           MOUSE_MIN2 = Math.abs(evt.deltaY);
         minDelta.setInnerText(`${MOUSE_MIN2} 【当前：${evt.deltaY}】`);
       }).insert(reset).insert(submit);
-    });
+    }));
     const calibrateBox = $$("h3").setInnerText("（根据提示移动鼠标和触控板）").insert(calibrate, "afterbegin");
     popup.insert(
       /*html*/
@@ -174,32 +218,12 @@ var __publicField = (obj, key, value) => {
     document.body.insertAdjacentElement("afterbegin", popup.element);
     popup.element.showModal();
     window.onload = () => {
-      window.player.pause();
+      oldAutoPlayStatus = window.player.getAutoplay();
+      window.player.setAutoplay(false);
       document.body.style.overflow = "hidden";
     };
   };
-  const MOUSE_MIN = getMouseMinDelta() || 100;
-  console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] MOUSE_MIN: ${MOUSE_MIN}`);
-  const isFullScreen = () => !!document.fullscreenElement;
-  const isTrackpad = (wheelEvent) => {
-    return Math.abs(wheelEvent.deltaY) < MOUSE_MIN || Math.abs(wheelEvent.deltaY) > MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2);
-  };
-  const orgin = EventTarget.prototype.addEventListener;
-  const applyHandler = (target, thisArg, args) => {
-    const [type, evt, ...rest] = args;
-    if (thisArg instanceof HTMLElement || !(evt instanceof Function) || type !== "mousewheel" && type !== "wheel")
-      return Reflect.apply(target, thisArg, args);
-    const evtWrapper = (e) => {
-      if (!isFullScreen() || !isTrackpad(e))
-        return Reflect.apply(evt, thisArg, [e]);
-      const proxy = new Proxy(e, {
-        get: (obj, prop) => typeof prop === "symbol" || prop !== "wheelDelta" ? Reflect.get(obj, prop) : Reflect.get(obj, "deltaY") * 10
-        // Considering that `wheelDelta` is deprecated
-      });
-      return Reflect.apply(evt, thisArg, [proxy]);
-    };
-    return Reflect.apply(target, thisArg, [type, evtWrapper, ...rest]);
-  };
-  EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler });
+  setupHook();
   setupInitPopup();
+  registerMenus();
 })();
