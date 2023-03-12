@@ -1,4 +1,5 @@
-import { isFullScreen, isTrackpad } from "./utils"
+import { setupInitPopup } from "./popup"
+import { isFullScreen, isTrackpad } from "./utils/detect"
 
 interface EventListener<T extends Event> {
   (evt: T): void
@@ -8,7 +9,7 @@ const orgin = EventTarget.prototype.addEventListener
 
 const applyHandler = <T extends typeof orgin>(target: T, thisArg: EventTarget, args: Parameters<T>) => {
   const [type, evt, ...rest] = args
-  if ( 
+  if (
     thisArg instanceof HTMLElement ||
     !(evt instanceof Function) ||
     (type !== "mousewheel" && type !== "wheel")
@@ -26,3 +27,5 @@ const applyHandler = <T extends typeof orgin>(target: T, thisArg: EventTarget, a
 }
 
 EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler })
+
+setupInitPopup()
