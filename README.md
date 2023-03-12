@@ -17,10 +17,8 @@
 
 ## 安装
 
-[Greasyfork](https://greasyfork.org/zh-CN/scripts/432783)
-
-[Release](https://github.com/MaxChang3/Bilibili-Trackpad-Scroll-Reverser/releases/latest/download/bilibili-trackpad-scroll-reverser.user.js)
-
+[[Github Release](https://github.com/MaxChang3/Bilibili-Trackpad-Scroll-Reverser/releases/latest/download/bilibili-trackpad-scroll-reverser.user.js)]
+[[Greasyfork](https://greasyfork.org/zh-CN/scripts/432783)]
 ## 原理
 
 Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事件。~~（为什么不用 `wheel`！）~~
