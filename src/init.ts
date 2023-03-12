@@ -2,6 +2,15 @@ import { $$ } from "./utils/element"
 import { Popup } from "./utils/popup"
 import { getMouseMinDelta, setMouseMinDelta } from "./utils/data"
 
+const once = <A extends any[], R, T>(
+    fn: (this: T, ...arg: A) => R
+): ((this: T, ...arg: A) => R | undefined) => {
+    let done = false
+    return function (this: T, ...args: A) {
+        return done ? void 0 : ((done = true), fn.apply(this, args))
+    }
+}
+
 const setMinDelta = (popup: Popup, delta: number) => {
     setMouseMinDelta(delta)
     alert(`已经设置为【${getMouseMinDelta()}】`)
@@ -25,7 +34,7 @@ export const setupInitPopup = () => {
     const calibrate = $$('button')
         .setInnerText("校准")
         .setAttribute('class', 'default-btn')
-        .on('click', () => {
+        .on('click', once(() => {
             let MOUSE_MIN = Infinity
             const minDelta = $$('u')
             const minDeltaInfo = $$('h1')
@@ -53,7 +62,7 @@ export const setupInitPopup = () => {
                 })
                 .insert(reset)
                 .insert(submit)
-        })
+        }))
     const calibrateBox = $$('h3')
         .setInnerText('（根据提示移动鼠标和触控板）')
         .insert(calibrate, 'afterbegin')
