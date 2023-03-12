@@ -31,11 +31,13 @@ var __publicField = (obj, key, value) => {
   const getMouseMinDelta = () => GM_getValue("MOUSE_MIN", void 0);
   const setMouseMinDelta = (number) => GM_setValue("MOUSE_MIN", number);
   const deleteMouseMinDelta = () => GM_deleteValue("MOUSE_MIN");
-  const MOUSE_MIN = getMouseMinDelta() || 100;
+  const MOUSE_MIN = getMouseMinDelta() || -1;
   console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] MOUSE_MIN: ${MOUSE_MIN}`);
   const isFullScreen = () => !!document.fullscreenElement;
   const isTrackpad = (wheelEvent) => {
-    return Math.abs(wheelEvent.deltaY) < MOUSE_MIN || Math.abs(wheelEvent.deltaY) > MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2);
+    if (MOUSE_MIN === -1)
+      return Math.abs(wheelEvent.deltaY) < 100;
+    return Math.abs(wheelEvent.deltaY) != MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2);
   };
   const orgin = EventTarget.prototype.addEventListener;
   const applyHandler = (target, thisArg, args) => {
@@ -169,9 +171,9 @@ var __publicField = (obj, key, value) => {
       return done ? void 0 : (done = true, fn.apply(this, args));
     };
   };
-  const setMinDelta = (popup, delta) => {
+  const setMinDelta = (popup, delta, info) => {
     setMouseMinDelta(delta);
-    alert(`已经设置为【${getMouseMinDelta()}】`);
+    alert(info);
     popup.closeModal();
     window.player.setAutoplay(oldAutoPlayStatus);
     location.reload();
@@ -182,7 +184,7 @@ var __publicField = (obj, key, value) => {
     customElements.define("my-popup", Popup);
     const popup = $$("my-popup");
     const easy = $$("button").setInnerText("简单").setAttribute("class", "default-btn").on("click", () => {
-      setMinDelta(popup.element, 100);
+      setMinDelta(popup.element, -1, `已经设置为【简单模式】`);
     });
     const easyBox = $$("h3").setInnerText("（直接使用，默认 deltaY 100 以下为触控板）").insert(easy, "afterbegin");
     const calibrate = $$("button").setInnerText("校准").setAttribute("class", "default-btn").on("click", once(() => {
@@ -193,7 +195,7 @@ var __publicField = (obj, key, value) => {
         MOUSE_MIN2 = Infinity;
       });
       const submit = $$("button").setInnerText("确定").on("click", () => {
-        setMinDelta(popup.element, MOUSE_MIN2);
+        setMinDelta(popup.element, MOUSE_MIN2, `已经设置为【${getMouseMinDelta()}】`);
       });
       popup.insert(
         /*html*/
