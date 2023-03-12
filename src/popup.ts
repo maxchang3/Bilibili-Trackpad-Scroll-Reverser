@@ -1,5 +1,5 @@
-import { GM_getValue, GM_setValue } from "$"
 import { $$ } from "./utils/element"
+import { getMouseMinDelta, setMouseMinDelta } from "./utils/data"
 interface DOMEvent<T extends EventTarget> extends Event {
     readonly target: T
 }
@@ -62,16 +62,22 @@ class Popup extends HTMLElement {
     }
 }
 
+const setMinDelta = (popup: Popup, delta: number) => {
+    setMouseMinDelta(delta)
+    alert(`已经设置为【${getMouseMinDelta()}】`)
+    popup.closeModal()
+    location.reload()
+}
+
 export const setupInitPopup = () => {
-    if (GM_getValue('MOUSE_MIN', undefined) !== undefined)  return
+    if (getMouseMinDelta() !== undefined) return
     customElements.define('my-popup', Popup)
     const popup = $$<Popup>('my-popup')
     const easy = $$('button')
         .setInnerText("简单")
         .setAttribute('class', 'default-btn')
         .on('click', () => {
-            GM_setValue('MOUSE_MIN', 100)
-            popup.element.closeModal()
+            setMinDelta(popup.element, 100)
         })
     const easyBox = $$('h3')
         .setInnerText('（直接使用，默认 deltaY 100 以下为触控板）')
@@ -93,9 +99,7 @@ export const setupInitPopup = () => {
             const submit = $$('button')
                 .setInnerText("确定")
                 .on('click', () => {
-                    GM_setValue('MOUSE_MIN', MOUSE_MIN)
-                    popup.element.closeModal()
-                    alert(`已经设置为【${GM_getValue('MOUSE_MIN', undefined)}】`)
+                    setMinDelta(popup.element, MOUSE_MIN)
                 })
             popup
                 .insert(/*html*/`<h1>请使用<u>最小</u>刻度滚动<u>鼠标滚轮</u>！（优先整数）</h1>`)

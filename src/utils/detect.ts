@@ -1,7 +1,8 @@
-import { GM_getValue } from "$"
+import { getMouseMinDelta } from "./data"
 
-const MOUSE_MIN = GM_getValue('MOUSE_MIN', 100)
-console.log(MOUSE_MIN)
+const MOUSE_MIN = getMouseMinDelta() || 100
+
+console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] MOUSE_MIN: ${MOUSE_MIN}`)
 
 export const isFullScreen = () => !!(document.fullscreenElement)
 
