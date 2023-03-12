@@ -1,3 +1,4 @@
+import { registerMenus } from "./menu"
 import { setupInitPopup } from "./popup"
 import { isFullScreen, isTrackpad } from "./utils/detect"
 
@@ -29,3 +30,4 @@ const applyHandler = <T extends typeof orgin>(target: T, thisArg: EventTarget, a
 EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler })
 
 setupInitPopup()
+registerMenus()
