@@ -8,5 +8,5 @@ export const isFullScreen = () => !!(document.fullscreenElement)
 
 export const isTrackpad = (wheelEvent: WheelEvent) => {
     return (Math.abs(wheelEvent.deltaY) < MOUSE_MIN) ||
-        (Math.abs(wheelEvent.deltaY) > MOUSE_MIN && Number.isInteger(wheelEvent.deltaY))
+        (Math.abs(wheelEvent.deltaY) > MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2))
 }
