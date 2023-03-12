@@ -1,6 +1,6 @@
 import { setupHook } from "./hook"
 import { registerMenus } from "./menu"
-import { setupInitPopup } from "./popup"
+import { setupInitPopup } from "./init"
 
 setupHook()
 setupInitPopup()
