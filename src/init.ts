@@ -13,11 +13,11 @@ const once = <A extends any[], R, T>(
     }
 }
 
-const setMinDelta = (popup: Popup, delta: number, info: string) => {
+const setMinDelta = (popup: Popup, delta: number) => {
     setMouseMinDelta(delta)
-    alert(info)
+    alert(`已经设置为【${getMouseMinDelta()}】(-1 为简单模式)`)
     popup.closeModal()
-    window.player.setAutoplay(oldAutoPlayStatus)
+    player.setAutoplay(oldAutoPlayStatus)
     location.reload()
 }
 
@@ -29,7 +29,7 @@ export const setupInitPopup = () => {
         .setInnerText("简单")
         .setAttribute('class', 'default-btn')
         .on('click', () => {
-            setMinDelta(popup.element, -1, `已经设置为【简单模式】`)
+            setMinDelta(popup.element, -1)
         })
     const easyBox = $$('h3')
         .setInnerText('（直接使用，默认 deltaY 100 以下为触控板）')
@@ -51,7 +51,7 @@ export const setupInitPopup = () => {
             const submit = $$('button')
                 .setInnerText("确定")
                 .on('click', () => {
-                    setMinDelta(popup.element, MOUSE_MIN, `已经设置为【${getMouseMinDelta()}】`)
+                    setMinDelta(popup.element, MOUSE_MIN)
                 })
             popup
                 .insert(/*html*/`<h1>请使用<u>最小</u>刻度滚动<u>鼠标滚轮</u>！（优先整数）</h1>`)
@@ -77,11 +77,11 @@ export const setupInitPopup = () => {
         .insert(easyBox)
         .insert('&nbsp;')
         .insert(calibrateBox)
-    document.body.insertAdjacentElement('afterbegin', popup.element)
-    popup.element.showModal()
     window.onload = () => {
-        oldAutoPlayStatus = window.player.getAutoplay()
-        window.player.setAutoplay(false)
+        document.body.insertAdjacentElement('afterbegin', popup.element)
+        popup.element.showModal()
+        oldAutoPlayStatus = player.getAutoplay()
+        player.setAutoplay(false)
         document.body.style.overflow = 'hidden'
     }
 }
