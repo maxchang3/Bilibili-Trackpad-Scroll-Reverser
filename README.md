@@ -17,8 +17,9 @@
 
 ## 安装
 
-[[Github Release](https://github.com/MaxChang3/Bilibili-Trackpad-Scroll-Reverser/releases/latest/download/bilibili-trackpad-scroll-reverser.user.js)]
 [[Greasyfork](https://greasyfork.org/zh-CN/scripts/432783)]
+[[Github Release](https://github.com/MaxChang3/Bilibili-Trackpad-Scroll-Reverser/releases/latest/download/bilibili-trackpad-scroll-reverser.user.js)]
+[[Github Pages](https://maxchang3.github.io/Bilibili-Trackpad-Scroll-Reverser/bilibili-trackpad-scroll-reverser.user.js)]
 
 ## 原理
 
