@@ -19,6 +19,7 @@
 
 [[Github Release](https://github.com/MaxChang3/Bilibili-Trackpad-Scroll-Reverser/releases/latest/download/bilibili-trackpad-scroll-reverser.user.js)]
 [[Greasyfork](https://greasyfork.org/zh-CN/scripts/432783)]
+
 ## 原理
 
 Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事件。~~（为什么不用 `wheel`！）~~
@@ -31,7 +32,7 @@ Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事�
 
 目前的逻辑是判断出鼠标，反过来得知触控板：
 
-1.根据经验主义，鼠标滚轮推动下的 `deltaY` 的最小整数值<sup>[^1]</sup>外的其他情况能得到的 `deltaY` 大概率为浮点数，并且小数点后较为复杂。形如：`235.867919921875`
+1.根据经验主义，鼠标滚轮推动下的 `deltaY` 的**最小整数值**外的其他情况能得到的 `deltaY` 大概率为浮点数，并且小数点后较为复杂。形如：`235.867919921875`
 
 2.触控板大部分情况下为整数，存在为浮点数的触控板，但是一般也不会很复杂。形如：`2.5`。
 
