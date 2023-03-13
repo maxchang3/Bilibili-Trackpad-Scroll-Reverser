@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         哔哩哔哩触控板滚动反转
 // @namespace    http://zhangmaimai.com/
-// @version      2.0.6
+// @version      2.0.7
 // @author       MaxChang3
 // @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
 // @license      MIT
@@ -171,11 +171,11 @@ var __publicField = (obj, key, value) => {
       return done ? void 0 : (done = true, fn.apply(this, args));
     };
   };
-  const setMinDelta = (popup, delta, info) => {
+  const setMinDelta = (popup, delta) => {
     setMouseMinDelta(delta);
-    alert(info);
+    alert(`已经设置为【${getMouseMinDelta()}】(-1 为简单模式)`);
     popup.closeModal();
-    window.player.setAutoplay(oldAutoPlayStatus);
+    player.setAutoplay(oldAutoPlayStatus);
     location.reload();
   };
   const setupInitPopup = () => {
@@ -184,7 +184,7 @@ var __publicField = (obj, key, value) => {
     customElements.define("my-popup", Popup);
     const popup = $$("my-popup");
     const easy = $$("button").setInnerText("简单").setAttribute("class", "default-btn").on("click", () => {
-      setMinDelta(popup.element, -1, `已经设置为【简单模式】`);
+      setMinDelta(popup.element, -1);
     });
     const easyBox = $$("h3").setInnerText("（直接使用，默认 deltaY 100 以下为触控板）").insert(easy, "afterbegin");
     const calibrate = $$("button").setInnerText("校准").setAttribute("class", "default-btn").on("click", once(() => {
@@ -195,7 +195,7 @@ var __publicField = (obj, key, value) => {
         MOUSE_MIN2 = Infinity;
       });
       const submit = $$("button").setInnerText("确定").on("click", () => {
-        setMinDelta(popup.element, MOUSE_MIN2, `已经设置为【${getMouseMinDelta()}】`);
+        setMinDelta(popup.element, MOUSE_MIN2);
       });
       popup.insert(
         /*html*/
@@ -217,11 +217,11 @@ var __publicField = (obj, key, value) => {
             <h2>初始化，请选择你的反转策略：</h2>
         `
     ).insert(easyBox).insert("&nbsp;").insert(calibrateBox);
-    document.body.insertAdjacentElement("afterbegin", popup.element);
-    popup.element.showModal();
     window.onload = () => {
-      oldAutoPlayStatus = window.player.getAutoplay();
-      window.player.setAutoplay(false);
+      document.body.insertAdjacentElement("afterbegin", popup.element);
+      popup.element.showModal();
+      oldAutoPlayStatus = player.getAutoplay();
+      player.setAutoplay(false);
       document.body.style.overflow = "hidden";
     };
   };
