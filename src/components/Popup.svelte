@@ -30,7 +30,8 @@
         background-color: hsla(0, 0%, 7%, 0.65);
     }
     .inner {
-        padding: 25px;
+        width: 100%;
+        height: 100%;
     }
     .inner:focus {
         outline: none;
