@@ -9,13 +9,13 @@ if (getMouseMinDelta() === undefined) {
     window.onload = () => {
         player.setAutoplay(false)
         document.body.style.overflow = 'hidden'
+        new App({
+            target: (() => {
+                const app = document.createElement('div')
+                document.body.append(app)
+                return app
+            })(),
+        })
     }
-    new App({
-        target: (() => {
-            const app = document.createElement('div')
-            document.body.append(app)
-            return app
-        })(),
-    })
 }
 
