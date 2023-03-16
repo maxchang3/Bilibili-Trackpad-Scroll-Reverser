@@ -7,7 +7,6 @@ setupHook()
 registerMenus()
 if (getMouseMinDelta() === undefined) {
     window.onload = () => {
-        player.setAutoplay(false)
         document.body.style.overflow = 'hidden'
         new App({
             target: (() => {

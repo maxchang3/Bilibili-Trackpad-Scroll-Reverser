@@ -3,9 +3,10 @@
     import { getMouseMinDelta, setMouseMinDelta } from "@/utils/data"
 
     let openCalibrate = false
-    let oldAutoPlayStatus: boolean = player.getAutoplay()
     let minDelta: number = Infinity
     let currentDelta: number, popup: Popup
+
+    player.on("Player_Canplay", () => player.pause())
 
     const setMinDelta = (delta: number) => {
         if (delta === Infinity) {
@@ -15,7 +16,6 @@
         setMouseMinDelta(delta)
         alert(`已经设置为【${getMouseMinDelta()}】(-1 为简单模式)`)
         popup.closeModal()
-        player.setAutoplay(oldAutoPlayStatus)
         location.reload()
     }
 
