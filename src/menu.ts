@@ -1,5 +1,5 @@
 import { GM_registerMenuCommand } from "$"
-import { deleteMouseMinDelta } from "./utils/data"
+import { deleteMouseMinDelta } from "@/utils/data"
 
 
 export const registerMenus = () => {

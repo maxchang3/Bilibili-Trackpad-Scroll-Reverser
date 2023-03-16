@@ -1,4 +1,4 @@
-import { getMouseMinDelta } from "./data"
+import { getMouseMinDelta } from "@/utils/data"
 
 const MOUSE_MIN = getMouseMinDelta() || -1
 

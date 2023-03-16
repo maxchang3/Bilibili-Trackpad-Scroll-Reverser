@@ -1,4 +1,4 @@
-import { isFullScreen, isTrackpad } from "./utils/detect"
+import { isFullScreen, isTrackpad } from "@/utils/detect"
 
 interface EventListener<T extends Event> {
     (evt: T): void
