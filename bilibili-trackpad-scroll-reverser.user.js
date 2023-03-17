@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         哔哩哔哩触控板滚动反转
 // @namespace    http://zhangmaimai.com/
-// @version      2.1.0
+// @version      2.1.1
 // @author       MaxChang3
 // @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
 // @license      MIT
@@ -671,7 +671,7 @@
         button1.textContent = "校准";
         t9 = space();
         h31 = element("h3");
-        h31.textContent = "（根据提示移动鼠标和触控板）";
+        h31.textContent = "（校准使用，根据提示移动鼠标）【注意：对于 Windows 设备如果鼠标任意滚动幅度下均为整数值，请暂时选择简单模式】";
         t11 = space();
         if (if_block)
           if_block.c();
