@@ -46,9 +46,8 @@
         <h2>初始化，请选择你的反转策略：</h2>
         <button class="btn" on:click={() => setMinDelta(-1)}>简单</button>
         <h3>（直接使用，默认 deltaY 100以下为触控)</h3>
-        <button class="btn" on:click={() => (openCalibrate = true)}>校准</button
-        >
-        <h3>（根据提示移动鼠标和触控板）</h3>
+        <button class="btn" on:click={() => (openCalibrate = true)}>校准</button>
+        <h3>（校准使用，根据提示移动鼠标）【注意：对于 Windows 设备如果鼠标任意滚动幅度下均为整数值，请暂时选择简单模式】</h3>
         {#if openCalibrate == true}
             <h1>请使用 <u>最小</u> 刻度滚动 <u>鼠标滚轮</u> ！</h1>
             <h1>
