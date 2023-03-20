@@ -35,6 +35,8 @@
 
 **对于未开启平滑滚动的情况下的 Windows 设备、所有平台的 Firefox 浏览器下，目前暂时推荐使用「简单模式」。** 
 
+后续会在初始化流程自动引导该设置。
+
 ## 实现原理
 
 Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事件。~~（为什么不用 `wheel`！）~~
@@ -54,7 +56,7 @@ Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事�
 
 2.触控板大部分情况下为整数，存在为浮点数的触控板，但是一般也不会很复杂。形如：`2.5`。
 
-因此，可以采取人工矫正的方式，使用鼠标的最低刻度推动获取一个最低的整数 `deltaY`。除去这个值外的所有数值，都根据是否为整数<sup>[3]</sup>进行判断，是则为触控板，否则为鼠标。目前经过一段时间测试，效果良好。
+因此，采取人工矫正的方式，使用鼠标的最低刻度推动获取一个最低的整数 `deltaY`。除去这个值外的所有数值，都根据是否为整数<sup>[3]</sup>进行判断，是则为触控板，否则为鼠标。目前经过一段时间测试，效果良好。
 
 <sub>[1] 仅 Chrome / Safari，Firefox 下全部为整数值。</sub>
 
@@ -70,7 +72,7 @@ Hook `EventTarget.prototype.addEventListener` 拦截对应的 `mousewheel` 事�
 
 2.开启平滑滚动的情况下，数值为分布在 1 左右的浮点数。
 
-**因此，对于未开启平滑滚动的情况下的 Windows 设备目前暂时推荐使用「简单模式」。** 后续会在初始化流程自动引导该设置。平滑模式暂时未考虑方案。
+因此，对于 Windows 目前推荐使用简单模式。
 
 <sub>[1] 仅有限测试于 Windows 11（LEGION R7000）</sub>
 
