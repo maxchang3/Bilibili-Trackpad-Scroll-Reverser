@@ -58,7 +58,15 @@ type PlayerEvent =
     "Media_Autoplay_Not_Allowed" |
     "Player_Perch_Click" |
     "Player_Submit_Feedback" |
-    "Player_Virtual_Action";
+    "Player_Virtual_Action"
+
+interface PlayerContainer extends HTMLDivElement{
+    readonly dataset: {
+        revision: string,
+        screen: "normal" | "web" | "full",
+        "ctrl-hidden": "true" | "false"  
+    }
+}
 
 declare global {
     const player: {
@@ -120,6 +128,15 @@ declare global {
             getAudioId: () => void,
             getAudioList: () => void,
             requestAudioId: () => void,
+        },
+        getElements: () => {
+            container: PlayerContainer,
+            controlWrap: HTMLDivElement
+            endingPanel: HTMLDivElement
+            subtitle: HTMLDivElement
+            topFollow: HTMLDivElement
+            topTitle: HTMLDivElement
+            videoArea: HTMLDivElement
         }
     }
 }
