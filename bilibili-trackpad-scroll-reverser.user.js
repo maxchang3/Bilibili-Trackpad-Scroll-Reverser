@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         哔哩哔哩触控板滚动反转
 // @namespace    http://zhangmaimai.com/
-// @version      2.1.1
+// @version      2.1.2
 // @author       MaxChang3
 // @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
 // @license      MIT
@@ -29,8 +29,13 @@
   const setMouseMinDelta = (number) => _GM_setValue("MOUSE_MIN", number);
   const deleteMouseMinDelta = () => _GM_deleteValue("MOUSE_MIN");
   const MOUSE_MIN = getMouseMinDelta() || -1;
+  let container;
   console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] MOUSE_MIN: ${MOUSE_MIN}`);
-  const isFullScreen = () => !!document.fullscreenElement;
+  const isFullScreen = () => {
+    if (!container)
+      container = player.getElements().container;
+    return !!document.fullscreenElement || container.dataset.screen === "web";
+  };
   const isTrackpad = (wheelEvent) => {
     if (MOUSE_MIN === -1)
       return Math.abs(wheelEvent.deltaY) < 100;
