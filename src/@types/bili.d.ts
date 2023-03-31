@@ -64,7 +64,7 @@ interface PlayerContainer extends HTMLDivElement{
     readonly dataset: {
         revision: string,
         screen: "normal" | "web" | "full",
-        "ctrl-hidden": "true" | "false"  
+        "ctrl-hidden": `${boolean}`
     }
 }
 
