@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -7,7 +7,7 @@ settings:
 devDependencies:
   '@sveltejs/vite-plugin-svelte':
     specifier: ^2.0.3
-    version: registry.npmmirror.com/@sveltejs/vite-plugin-svelte@2.0.3(svelte@3.56.0)(vite@4.1.4)
+    version: registry.npmmirror.com/@sveltejs/vite-plugin-svelte@2.0.3(svelte@4.0.0)(vite@4.1.4)
   '@tsconfig/svelte':
     specifier: ^4.0.0
     version: 4.0.0
@@ -15,14 +15,14 @@ devDependencies:
     specifier: ^18.15.3
     version: registry.npmmirror.com/@types/node@18.15.3
   svelte:
-    specifier: ^3.56.0
-    version: registry.npmmirror.com/svelte@3.56.0
+    specifier: ^4.0.0
+    version: 4.0.0
   svelte-check:
     specifier: ^3.1.4
-    version: registry.npmmirror.com/svelte-check@3.1.4(svelte@3.56.0)
+    version: registry.npmmirror.com/svelte-check@3.1.4(svelte@4.0.0)
   svelte-preprocess:
     specifier: ^5.0.1
-    version: registry.npmmirror.com/svelte-preprocess@5.0.1(svelte@3.56.0)(typescript@4.9.5)
+    version: registry.npmmirror.com/svelte-preprocess@5.0.1(svelte@4.0.0)(typescript@4.9.5)
   tslib:
     specifier: ^2.5.0
     version: registry.npmmirror.com/tslib@2.5.0
@@ -37,6 +37,14 @@ devDependencies:
     version: 3.2.2(vite@4.1.4)
 
 packages:
+
+  /@ampproject/remapping@2.2.1:
+    resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.18
+    dev: true
 
   /@esbuild/android-arm64@0.16.17:
     resolution: {integrity: sha512-MIGl6p5sc3RDTLLkYL1MyL8BMRN4tLMRCn+yRJJmEDvYZ2M7tmAf80hx1kbNEUX2KJ50RRtxZ4JHLvCfuB6kBg==}
@@ -236,12 +244,46 @@ packages:
     dev: true
     optional: true
 
+  /@jridgewell/gen-mapping@0.3.3:
+    resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      '@jridgewell/set-array': 1.1.2
+      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/trace-mapping': 0.3.18
+    dev: true
+
+  /@jridgewell/resolve-uri@3.1.0:
+    resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
+    engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@jridgewell/set-array@1.1.2:
+    resolution: {integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==}
+    engines: {node: '>=6.0.0'}
+    dev: true
+
   /@jridgewell/sourcemap-codec@1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
     dev: true
 
+  /@jridgewell/sourcemap-codec@1.4.15:
+    resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
+    dev: true
+
+  /@jridgewell/trace-mapping@0.3.18:
+    resolution: {integrity: sha512-w+niJYzMHdd7USdiH2U6869nqhD2nbfZXND5Yp93qIbEmnDNk7PD48o+YchRVpzMU7M6jVCbenTR7PA1FLQ9pA==}
+    dependencies:
+      '@jridgewell/resolve-uri': 3.1.0
+      '@jridgewell/sourcemap-codec': 1.4.14
+    dev: true
+
   /@tsconfig/svelte@4.0.0:
     resolution: {integrity: sha512-NlCBbTpDFz6Outgs8JoqdQls9xAWPJAnjRnkqa60GQymjiAE3gliwNZ5TohZF3w3cZ4x8wpe0Ow5Y9hs1EnDXA==}
+    dev: true
+
+  /@types/estree@1.0.1:
+    resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: true
 
   /acorn-walk@8.2.0:
@@ -249,9 +291,37 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
+  /acorn@8.9.0:
+    resolution: {integrity: sha512-jaVNAFBHNLXspO543WnNNPZFRtavh3skAkITqD0/2aeMkKZTN+254PyhwxFYrk3vQ1xfY+2wbesJMs/JC8/PwQ==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+    dev: true
+
   /address@1.2.2:
     resolution: {integrity: sha512-4B/qKCfeE/ODUaAUpSwfzazo5x29WD4r3vXiWsB7I2mSDAihwEqKO+g8GELZUQSSAo5e1XTYh3ZVfLyxBc12nA==}
     engines: {node: '>= 10.0.0'}
+    dev: true
+
+  /aria-query@5.2.1:
+    resolution: {integrity: sha512-7uFg4b+lETFgdaJyETnILsXgnnzVnkHcgRbwbPwevm5x/LmUlt3MjczMRe1zg824iBgXZNRPTBftNYyRSKLp2g==}
+    dependencies:
+      dequal: 2.0.3
+    dev: true
+
+  /axobject-query@3.2.1:
+    resolution: {integrity: sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==}
+    dependencies:
+      dequal: 2.0.3
+    dev: true
+
+  /code-red@1.0.3:
+    resolution: {integrity: sha512-kVwJELqiILQyG5aeuyKFbdsI1fmQy1Cmf7dQ8eGmVuJoaRVdwey7WaMknr2ZFeVSYSKT0rExsa8EGw0aoI/1QQ==}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.15
+      '@types/estree': 1.0.1
+      acorn: 8.9.0
+      estree-walker: 3.0.3
+      periscopic: 3.1.0
     dev: true
 
   /cross-spawn@7.0.3:
@@ -261,6 +331,14 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /css-tree@2.3.1:
+    resolution: {integrity: sha512-6Fv1DV/TYw//QF5IzQdqsNDjx/wc8TrMBZsqjL9eW01tWb7R7k/mq+/VXfJCl7SoD5emsJop9cOByJZfs8hYIw==}
+    engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
+    dependencies:
+      mdn-data: 2.0.30
+      source-map-js: 1.0.2
     dev: true
 
   /debug@4.3.4:
@@ -278,6 +356,11 @@ packages:
   /define-lazy-prop@2.0.0:
     resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
     engines: {node: '>=8'}
+    dev: true
+
+  /dequal@2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
+    engines: {node: '>=6'}
     dev: true
 
   /detect-port@1.5.1:
@@ -322,6 +405,12 @@ packages:
     engines: {node: '>=0.12'}
     dev: true
 
+  /estree-walker@3.0.3:
+    resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
+    dependencies:
+      '@types/estree': 1.0.1
+    dev: true
+
   /fsevents@2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -345,6 +434,12 @@ packages:
     hasBin: true
     dev: true
 
+  /is-reference@3.0.1:
+    resolution: {integrity: sha512-baJJdQLiYaJdvFbJqXrcGv3WU3QCzBlUcI5QhbesIm6/xPsvmO+2CDoi/GMOFBQEQm+PXkwOPrp9KK5ozZsp2w==}
+    dependencies:
+      '@types/estree': 1.0.1
+    dev: true
+
   /is-wsl@2.2.0:
     resolution: {integrity: sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==}
     engines: {node: '>=8'}
@@ -356,11 +451,19 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
+  /locate-character@3.0.0:
+    resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
+    dev: true
+
   /magic-string@0.30.0:
     resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
     engines: {node: '>=12'}
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.14
+      '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
+
+  /mdn-data@2.0.30:
+    resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
     dev: true
 
   /mrmime@1.0.1:
@@ -386,6 +489,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /periscopic@3.1.0:
+    resolution: {integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==}
+    dependencies:
+      '@types/estree': 1.0.1
+      estree-walker: 3.0.3
+      is-reference: 3.0.1
+    dev: true
+
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: true
@@ -400,6 +511,30 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+    dev: true
+
+  /source-map-js@1.0.2:
+    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
+  /svelte@4.0.0:
+    resolution: {integrity: sha512-+yCYu3AEUu9n91dnQNGIbnVp8EmNQtuF/YImW4+FTXRHard7NMo+yTsWzggPAbj3fUEJ1FBJLkql/jkp6YB5pg==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@ampproject/remapping': 2.2.1
+      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/trace-mapping': 0.3.18
+      acorn: 8.9.0
+      aria-query: 5.2.1
+      axobject-query: 3.2.1
+      code-red: 1.0.3
+      css-tree: 2.3.1
+      estree-walker: 3.0.3
+      is-reference: 3.0.1
+      locate-character: 3.0.0
+      magic-string: 0.30.0
+      periscopic: 3.1.0
     dev: true
 
   /systemjs@6.14.1:
@@ -437,26 +572,13 @@ packages:
       isexe: 2.0.0
     dev: true
 
-  registry.npmmirror.com/@jridgewell/resolve-uri@3.1.0:
-    resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@jridgewell/resolve-uri/-/resolve-uri-3.1.0.tgz}
-    name: '@jridgewell/resolve-uri'
-    version: 3.1.0
-    engines: {node: '>=6.0.0'}
-    dev: true
-
-  registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.14:
-    resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz}
-    name: '@jridgewell/sourcemap-codec'
-    version: 1.4.14
-    dev: true
-
   registry.npmmirror.com/@jridgewell/trace-mapping@0.3.17:
     resolution: {integrity: sha512-MCNzAp77qzKca9+W/+I0+sEpaUnZoeasnghNeVc41VZCEKaCH73Vq3BZZ/SzWIgrqE4H4ceI+p+b6C0mHf9T4g==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.17.tgz}
     name: '@jridgewell/trace-mapping'
     version: 0.3.17
     dependencies:
-      '@jridgewell/resolve-uri': registry.npmmirror.com/@jridgewell/resolve-uri@3.1.0
-      '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.14
+      '@jridgewell/resolve-uri': 3.1.0
+      '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
   registry.npmmirror.com/@nodelib/fs.scandir@2.1.5:
@@ -486,7 +608,7 @@ packages:
       fastq: registry.npmmirror.com/fastq@1.15.0
     dev: true
 
-  registry.npmmirror.com/@sveltejs/vite-plugin-svelte@2.0.3(svelte@3.56.0)(vite@4.1.4):
+  registry.npmmirror.com/@sveltejs/vite-plugin-svelte@2.0.3(svelte@4.0.0)(vite@4.1.4):
     resolution: {integrity: sha512-o+cguBFdwIGtRbNkYOyqTM7KvRUffxh5bfK4oJsWKG2obu+v/cbpT03tJrGl58C7tRXo/aEC0/axN5FVHBj0nA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-2.0.3.tgz}
     id: registry.npmmirror.com/@sveltejs/vite-plugin-svelte/2.0.3
     name: '@sveltejs/vite-plugin-svelte'
@@ -500,8 +622,8 @@ packages:
       deepmerge: registry.npmmirror.com/deepmerge@4.3.0
       kleur: registry.npmmirror.com/kleur@4.1.5
       magic-string: registry.npmmirror.com/magic-string@0.29.0
-      svelte: registry.npmmirror.com/svelte@3.56.0
-      svelte-hmr: registry.npmmirror.com/svelte-hmr@0.15.1(svelte@3.56.0)
+      svelte: 4.0.0
+      svelte-hmr: registry.npmmirror.com/svelte-hmr@0.15.1(svelte@4.0.0)
       vite: registry.npmmirror.com/vite@4.1.4(@types/node@18.15.3)
       vitefu: registry.npmmirror.com/vitefu@0.2.4(vite@4.1.4)
     transitivePeerDependencies:
@@ -835,7 +957,7 @@ packages:
     version: 0.27.0
     engines: {node: '>=12'}
     dependencies:
-      '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.14
+      '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
   registry.npmmirror.com/magic-string@0.29.0:
@@ -844,7 +966,7 @@ packages:
     version: 0.29.0
     engines: {node: '>=12'}
     dependencies:
-      '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.14
+      '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
   registry.npmmirror.com/merge2@1.4.1:
@@ -973,7 +1095,7 @@ packages:
     dependencies:
       nanoid: registry.npmmirror.com/nanoid@3.3.4
       picocolors: registry.npmmirror.com/picocolors@1.0.0
-      source-map-js: registry.npmmirror.com/source-map-js@1.0.2
+      source-map-js: 1.0.2
     dev: true
 
   registry.npmmirror.com/queue-microtask@1.2.3:
@@ -1072,7 +1194,7 @@ packages:
     dependencies:
       chokidar: registry.npmmirror.com/chokidar@3.5.3
       immutable: registry.npmmirror.com/immutable@4.3.0
-      source-map-js: registry.npmmirror.com/source-map-js@1.0.2
+      source-map-js: 1.0.2
     dev: true
 
   registry.npmmirror.com/sorcery@0.11.0:
@@ -1081,17 +1203,10 @@ packages:
     version: 0.11.0
     hasBin: true
     dependencies:
-      '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.14
+      '@jridgewell/sourcemap-codec': 1.4.15
       buffer-crc32: registry.npmmirror.com/buffer-crc32@0.2.13
       minimist: registry.npmmirror.com/minimist@1.2.8
       sander: registry.npmmirror.com/sander@0.5.1
-    dev: true
-
-  registry.npmmirror.com/source-map-js@1.0.2:
-    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/source-map-js/-/source-map-js-1.0.2.tgz}
-    name: source-map-js
-    version: 1.0.2
-    engines: {node: '>=0.10.0'}
     dev: true
 
   registry.npmmirror.com/strip-indent@3.0.0:
@@ -1110,7 +1225,7 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  registry.npmmirror.com/svelte-check@3.1.4(svelte@3.56.0):
+  registry.npmmirror.com/svelte-check@3.1.4(svelte@4.0.0):
     resolution: {integrity: sha512-25Lb46ZS4IK/XpBMe4IBMrtYf23V8alqBX+szXoccb7uM0D2Wqq5rMRzYBONZnFVuU1bQG3R50lyIT5eRewv2g==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/svelte-check/-/svelte-check-3.1.4.tgz}
     id: registry.npmmirror.com/svelte-check/3.1.4
     name: svelte-check
@@ -1125,8 +1240,8 @@ packages:
       import-fresh: registry.npmmirror.com/import-fresh@3.3.0
       picocolors: registry.npmmirror.com/picocolors@1.0.0
       sade: registry.npmmirror.com/sade@1.8.1
-      svelte: registry.npmmirror.com/svelte@3.56.0
-      svelte-preprocess: registry.npmmirror.com/svelte-preprocess@5.0.1(svelte@3.56.0)(typescript@4.9.5)
+      svelte: 4.0.0
+      svelte-preprocess: registry.npmmirror.com/svelte-preprocess@5.0.1(svelte@4.0.0)(typescript@4.9.5)
       typescript: registry.npmmirror.com/typescript@4.9.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -1140,7 +1255,7 @@ packages:
       - sugarss
     dev: true
 
-  registry.npmmirror.com/svelte-hmr@0.15.1(svelte@3.56.0):
+  registry.npmmirror.com/svelte-hmr@0.15.1(svelte@4.0.0):
     resolution: {integrity: sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/svelte-hmr/-/svelte-hmr-0.15.1.tgz}
     id: registry.npmmirror.com/svelte-hmr/0.15.1
     name: svelte-hmr
@@ -1149,10 +1264,10 @@ packages:
     peerDependencies:
       svelte: '>=3.19.0'
     dependencies:
-      svelte: registry.npmmirror.com/svelte@3.56.0
+      svelte: 4.0.0
     dev: true
 
-  registry.npmmirror.com/svelte-preprocess@5.0.1(svelte@3.56.0)(typescript@4.9.5):
+  registry.npmmirror.com/svelte-preprocess@5.0.1(svelte@4.0.0)(typescript@4.9.5):
     resolution: {integrity: sha512-0HXyhCoc9rsW4zGOgtInylC6qj259E1hpFnJMJWTf+aIfeqh4O/QHT31KT2hvPEqQfdjmqBR/kO2JDkkciBLrQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/svelte-preprocess/-/svelte-preprocess-5.0.1.tgz}
     id: registry.npmmirror.com/svelte-preprocess/5.0.1
     name: svelte-preprocess
@@ -1199,15 +1314,8 @@ packages:
       magic-string: registry.npmmirror.com/magic-string@0.27.0
       sorcery: registry.npmmirror.com/sorcery@0.11.0
       strip-indent: registry.npmmirror.com/strip-indent@3.0.0
-      svelte: registry.npmmirror.com/svelte@3.56.0
+      svelte: 4.0.0
       typescript: registry.npmmirror.com/typescript@4.9.5
-    dev: true
-
-  registry.npmmirror.com/svelte@3.56.0:
-    resolution: {integrity: sha512-LvXiJbjdvJKwB/0CQyYpDX0q+hFqCyWmybzC2G6eK1tJJA/RSRCytTfNmjHv+RHlLuA70vWG7nXp6gbeErYvRA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/svelte/-/svelte-3.56.0.tgz}
-    name: svelte
-    version: 3.56.0
-    engines: {node: '>= 8'}
     dev: true
 
   registry.npmmirror.com/to-regex-range@5.0.1:
