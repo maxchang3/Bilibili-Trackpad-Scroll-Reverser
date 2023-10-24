@@ -12,8 +12,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0
   '@types/node':
-    specifier: ^18.15.3
-    version: registry.npmmirror.com/@types/node@18.15.3
+    specifier: ^20.0.0
+    version: 20.8.7
   svelte:
     specifier: ^3.56.0
     version: registry.npmmirror.com/svelte@3.56.0
@@ -31,7 +31,7 @@ devDependencies:
     version: registry.npmmirror.com/typescript@4.9.5
   vite:
     specifier: ^4.1.4
-    version: registry.npmmirror.com/vite@4.1.4(@types/node@18.15.3)
+    version: registry.npmmirror.com/vite@4.1.4(@types/node@20.8.7)
   vite-plugin-monkey:
     specifier: ^3.4.1
     version: 3.4.1(vite@4.1.4)
@@ -242,6 +242,12 @@ packages:
 
   /@tsconfig/svelte@4.0.0:
     resolution: {integrity: sha512-NlCBbTpDFz6Outgs8JoqdQls9xAWPJAnjRnkqa60GQymjiAE3gliwNZ5TohZF3w3cZ4x8wpe0Ow5Y9hs1EnDXA==}
+    dev: true
+
+  /@types/node@20.8.7:
+    resolution: {integrity: sha512-21TKHHh3eUHIi2MloeptJWALuCu5H7HQTdTrWIFReA8ad+aggoX+lRes3ex7/FtpC+sVUpFMQ+QTfYr74mruiQ==}
+    dependencies:
+      undici-types: 5.25.3
     dev: true
 
   /acorn-walk@8.2.0:
@@ -586,6 +592,10 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /undici-types@5.25.3:
+    resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
+    dev: true
+
   /untildify@4.0.0:
     resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
     engines: {node: '>=8'}
@@ -609,7 +619,7 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       systemjs: 6.14.1
-      vite: registry.npmmirror.com/vite@4.1.4(@types/node@18.15.3)
+      vite: registry.npmmirror.com/vite@4.1.4(@types/node@20.8.7)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -687,16 +697,10 @@ packages:
       magic-string: registry.npmmirror.com/magic-string@0.29.0
       svelte: registry.npmmirror.com/svelte@3.56.0
       svelte-hmr: registry.npmmirror.com/svelte-hmr@0.15.1(svelte@3.56.0)
-      vite: registry.npmmirror.com/vite@4.1.4(@types/node@18.15.3)
+      vite: registry.npmmirror.com/vite@4.1.4(@types/node@20.8.7)
       vitefu: registry.npmmirror.com/vitefu@0.2.4(vite@4.1.4)
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  registry.npmmirror.com/@types/node@18.15.3:
-    resolution: {integrity: sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-18.15.3.tgz}
-    name: '@types/node'
-    version: 18.15.3
     dev: true
 
   registry.npmmirror.com/@types/pug@2.0.6:
@@ -1418,7 +1422,7 @@ packages:
     hasBin: true
     dev: true
 
-  registry.npmmirror.com/vite@4.1.4(@types/node@18.15.3):
+  registry.npmmirror.com/vite@4.1.4(@types/node@20.8.7):
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/vite/-/vite-4.1.4.tgz}
     id: registry.npmmirror.com/vite/4.1.4
     name: vite
@@ -1446,7 +1450,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': registry.npmmirror.com/@types/node@18.15.3
+      '@types/node': 20.8.7
       esbuild: registry.npmmirror.com/esbuild@0.16.17
       postcss: registry.npmmirror.com/postcss@8.4.21
       resolve: registry.npmmirror.com/resolve@1.22.1
@@ -1466,7 +1470,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: registry.npmmirror.com/vite@4.1.4(@types/node@18.15.3)
+      vite: registry.npmmirror.com/vite@4.1.4(@types/node@20.8.7)
     dev: true
 
   registry.npmmirror.com/wrappy@1.0.2:
