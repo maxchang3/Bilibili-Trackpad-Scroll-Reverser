@@ -34,7 +34,7 @@ devDependencies:
     version: registry.npmmirror.com/vite@4.1.4(@types/node@20.8.7)
   vite-plugin-monkey:
     specifier: ^3.4.1
-    version: 3.4.1(vite@4.1.4)
+    version: 3.5.1(vite@4.1.4)
 
 packages:
 
@@ -236,6 +236,10 @@ packages:
     dev: true
     optional: true
 
+  /@jridgewell/sourcemap-codec@1.4.14:
+    resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
+    dev: true
+
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
     dev: true
@@ -250,18 +254,13 @@ packages:
       undici-types: 5.25.3
     dev: true
 
-  /acorn-walk@8.2.0:
-    resolution: {integrity: sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==}
+  /acorn-walk@8.3.2:
+    resolution: {integrity: sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==}
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /address@1.2.2:
-    resolution: {integrity: sha512-4B/qKCfeE/ODUaAUpSwfzazo5x29WD4r3vXiWsB7I2mSDAihwEqKO+g8GELZUQSSAo5e1XTYh3ZVfLyxBc12nA==}
-    engines: {node: '>= 10.0.0'}
-    dev: true
-
-  /big-integer@1.6.51:
-    resolution: {integrity: sha512-GPEid2Y9QU1Exl1rpO9B2IPJGHPSupF5GnVIP0blYvNOMer2bTvSWs1jGOUg04hTmu67nmLsQ9TBo1puaotBHg==}
+  /big-integer@1.6.52:
+    resolution: {integrity: sha512-QxD8cf2eVqJOOz63z6JIN9BzvVs/dlySa5HGSBH5xtR8dPteIRQnBxxKqkNTiT6jbDTF6jAfrd4oMcND9RGbQg==}
     engines: {node: '>=0.6'}
     dev: true
 
@@ -269,7 +268,7 @@ packages:
     resolution: {integrity: sha512-z0M+byMThzQmD9NILRniCUXYsYpjwnlO8N5uCFaCqIOpqRsJCrQL9NK3JsD67CN5a08nF5oIL2bD6loTdHOuKw==}
     engines: {node: '>= 5.10.0'}
     dependencies:
-      big-integer: 1.6.51
+      big-integer: 1.6.52
     dev: true
 
   /bundle-name@3.0.0:
@@ -286,18 +285,6 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-    dev: true
-
-  /debug@4.3.4:
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.2
     dev: true
 
   /default-browser-id@3.0.0:
@@ -321,16 +308,6 @@ packages:
   /define-lazy-prop@3.0.0:
     resolution: {integrity: sha512-N+MeXYoqr3pOgn8xfyRPREN7gHakLYjhsHhWGT3fWAiL4IkAt0iDw14QiiEm2bE30c5XX5q0FtAA3CK5f9/BUg==}
     engines: {node: '>=12'}
-    dev: true
-
-  /detect-port@1.5.1:
-    resolution: {integrity: sha512-aBzdj76lueB6uUst5iAs7+0H/oOjqI5D16XUWxlWMIMROhcM0rfsNVk93zTngq1dDNpoXRr++Sus7ETAExppAQ==}
-    hasBin: true
-    dependencies:
-      address: 1.2.2
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /dom-serializer@2.0.0:
@@ -389,14 +366,14 @@ packages:
       human-signals: 4.3.1
       is-stream: 3.0.0
       merge-stream: 2.0.0
-      npm-run-path: 5.1.0
+      npm-run-path: 5.3.0
       onetime: 6.0.0
       signal-exit: 3.0.7
       strip-final-newline: 3.0.0
     dev: true
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -408,8 +385,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /htmlparser2@9.0.0:
-    resolution: {integrity: sha512-uxbSI98wmFT/G4P2zXx4OVx04qWUmyFPrD2/CNepa2Zo3GPNaCaaxElDgwUrwYWkK1nr9fft0Ya8dws8coDLLQ==}
+  /htmlparser2@9.1.0:
+    resolution: {integrity: sha512-5zfg6mHUoaer/97TxnGpxmbR7zJtPwIYFMZ/H5ucTlPZhKvtum05yiPK3Mgai3a0DyVxv7qYqoweaEd2nrYQzQ==}
     dependencies:
       domelementtype: 2.3.0
       domhandler: 5.0.3
@@ -468,8 +445,8 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /magic-string@0.30.2:
-    resolution: {integrity: sha512-lNZdu7pewtq/ZvWUp9Wpf/x7WzMTsR26TWV03BRZrXFsv+BI6dy8RAiKgm1uM/kyR0rCfUcqvOlXKG66KhIGug==}
+  /magic-string@0.30.7:
+    resolution: {integrity: sha512-8vBuFF/I/+OSLRmdf2wwFCJCz+nSn0m6DPvGH1fS/KiQoSaR+sETbov0eIk9KhEKy8CYqIkIAnbohxT/4H0kuA==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
@@ -494,10 +471,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /ms@2.1.2:
-    resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
-    dev: true
-
   /npm-run-path@4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
@@ -505,8 +478,8 @@ packages:
       path-key: 3.1.1
     dev: true
 
-  /npm-run-path@5.1.0:
-    resolution: {integrity: sha512-sJOdmRGrY2sjNTRMbSvluQqg+8X7ZK61yvzBEIDhz4f8z1TZFYABsqjjCBd/0PUNE9M6QDgHJXQkGUEm7Q+l9Q==}
+  /npm-run-path@5.3.0:
+    resolution: {integrity: sha512-ppwTtiJZq0O/ai0z7yfudtBpWIoxM8yE6nHi1X47eFR2EWORqfbu6CnPlNsjeN683eT0qG6H/Pyf9fCcvjnnnQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       path-key: 4.0.0
@@ -583,8 +556,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /systemjs@6.14.1:
-    resolution: {integrity: sha512-8ftwWd+XnQtZ/aGbatrN4QFNGrKJzmbtixW+ODpci7pyoTajg4sonPP8aFLESAcuVxaC1FyDESt+SpfFCH9rZQ==}
+  /systemjs@6.14.3:
+    resolution: {integrity: sha512-hQv45irdhXudAOr8r6SVSpJSGtogdGZUbJBRKCE5nsIS7tsxxvnIHqT4IOPWj+P+HcSzeWzHlGCGpmhPDIKe+w==}
     dev: true
 
   /titleize@3.0.0:
@@ -601,8 +574,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /vite-plugin-monkey@3.4.1(vite@4.1.4):
-    resolution: {integrity: sha512-zfbWOhyRXKc6Mg4JRMdj1/lEFCoKcJ7PM4dmvnxraOKSCReEM3cvOV+Iwg7KfPlhO1voBLmYVqcy1FuT23462A==}
+  /vite-plugin-monkey@3.5.1(vite@4.1.4):
+    resolution: {integrity: sha512-sLbWbhvhXbm1d4SFY9eVx3KFqDP1gbjqUJlbpf/KRKLAFcjO3VIMOJb0oqxH77zlmSZhITrqLcsB3AyH+92i/w==}
     engines: {node: ^14.18 || >= 16, pnpm: '>=6'}
     peerDependencies:
       vite: '>=3.0.0'
@@ -610,18 +583,15 @@ packages:
       vite:
         optional: true
     dependencies:
-      acorn-walk: 8.2.0
+      acorn-walk: 8.3.2
       cross-spawn: 7.0.3
-      detect-port: 1.5.1
-      htmlparser2: 9.0.0
-      magic-string: 0.30.2
+      htmlparser2: 9.1.0
+      magic-string: 0.30.7
       mrmime: 1.0.1
       open: 9.1.0
       picocolors: 1.0.0
-      systemjs: 6.14.1
+      systemjs: 6.14.3
       vite: registry.npmmirror.com/vite@4.1.4(@types/node@20.8.7)
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /which@2.0.2:
@@ -651,7 +621,7 @@ packages:
     version: 0.3.17
     dependencies:
       '@jridgewell/resolve-uri': registry.npmmirror.com/@jridgewell/resolve-uri@3.1.0
-      '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.14
+      '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
   registry.npmmirror.com/@nodelib/fs.scandir@2.1.5:
@@ -786,7 +756,7 @@ packages:
       normalize-path: registry.npmmirror.com/normalize-path@3.0.0
       readdirp: registry.npmmirror.com/readdirp@3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   registry.npmmirror.com/concat-map@0.0.1:
@@ -1033,7 +1003,7 @@ packages:
     version: 0.29.0
     engines: {node: '>=12'}
     dependencies:
-      '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.14
+      '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
   registry.npmmirror.com/merge2@1.4.1:
@@ -1161,7 +1131,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: registry.npmmirror.com/nanoid@3.3.4
-      picocolors: registry.npmmirror.com/picocolors@1.0.0
+      picocolors: 1.0.0
       source-map-js: registry.npmmirror.com/source-map-js@1.0.2
     dev: true
 
@@ -1221,7 +1191,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   registry.npmmirror.com/run-parallel@1.2.0:
@@ -1456,7 +1426,7 @@ packages:
       resolve: registry.npmmirror.com/resolve@1.22.1
       rollup: registry.npmmirror.com/rollup@3.18.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   registry.npmmirror.com/vitefu@0.2.4(vite@4.1.4):
