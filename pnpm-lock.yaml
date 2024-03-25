@@ -10,7 +10,7 @@ devDependencies:
     version: registry.npmmirror.com/@sveltejs/vite-plugin-svelte@2.0.3(svelte@3.56.0)(vite@5.2.6)
   '@tsconfig/svelte':
     specifier: ^4.0.0
-    version: 4.0.0
+    version: 4.0.1
   '@types/node':
     specifier: ^20.0.0
     version: 20.11.30
@@ -357,8 +357,8 @@ packages:
     dev: true
     optional: true
 
-  /@tsconfig/svelte@4.0.0:
-    resolution: {integrity: sha512-NlCBbTpDFz6Outgs8JoqdQls9xAWPJAnjRnkqa60GQymjiAE3gliwNZ5TohZF3w3cZ4x8wpe0Ow5Y9hs1EnDXA==}
+  /@tsconfig/svelte@4.0.1:
+    resolution: {integrity: sha512-B+XlGpmuAQzJqDoBATNCvEPqQg0HkO7S8pM14QDI5NsmtymzRexQ1N+nX2H6RTtFbuFgaZD4I8AAi8voGg0GLg==}
     dev: true
 
   /@types/estree@1.0.5:
