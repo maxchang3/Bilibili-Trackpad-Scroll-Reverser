@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         哔哩哔哩触控板滚动反转
 // @namespace    http://zhangmaimai.com/
-// @version      2.1.2
+// @version      2.1.3
 // @author       MaxChang3
 // @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
 // @license      MIT
@@ -9,6 +9,7 @@
 // @match        https://www.bilibili.com/bangumi/play/*
 // @match        https://www.bilibili.com/video/*
 // @match        https://www.bilibili.com/list/*
+// @grant        GM_addStyle
 // @grant        GM_deleteValue
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
@@ -16,7 +17,7 @@
 // @run-at       document-start
 // ==/UserScript==
 
-(t=>{const e=document.createElement("style");e.dataset.source="vite-plugin-monkey",e.textContent=t,document.head.append(e)})(" dialog.svelte-1n5bz51{padding:0;border:0;height:80%;width:80%;overflow:hidden;position:fixed;user-select:none}dialog.svelte-1n5bz51::backdrop{background-color:#121212a6}.inner.svelte-1n5bz51{width:100%;height:100%}.inner.svelte-1n5bz51:focus{outline:none}main.svelte-p43d4u{height:100%;padding:25px}.calibrate-btn.svelte-p43d4u{display:flex;flex-direction:row}button.svelte-p43d4u{box-sizing:border-box;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;width:4rem;font-size:1.1rem;background:#479fd1;color:#fff;border:0;margin-right:5px;padding:10px}button.svelte-p43d4u:focus{outline:none} ");
+(e=>{if(typeof GM_addStyle=="function"){GM_addStyle(e);return}const t=document.createElement("style");t.textContent=e,document.head.append(t)})(" dialog.svelte-1n5bz51{padding:0;border:0;height:80%;width:80%;overflow:hidden;position:fixed;-webkit-user-select:none;user-select:none}dialog.svelte-1n5bz51::backdrop{background-color:#121212a6}.inner.svelte-1n5bz51{width:100%;height:100%}.inner.svelte-1n5bz51:focus{outline:none}main.svelte-p43d4u{height:100%;padding:25px}.calibrate-btn.svelte-p43d4u{display:flex;flex-direction:row}button.svelte-p43d4u{box-sizing:border-box;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;width:4rem;font-size:1.1rem;background:#479fd1;color:#fff;border:0;margin-right:5px;padding:10px}button.svelte-p43d4u:focus{outline:none} ");
 
 (function () {
   'use strict';
@@ -170,8 +171,9 @@
   }
   function set_data(text2, data) {
     data = "" + data;
-    if (text2.wholeText !== data)
-      text2.data = data;
+    if (text2.data === data)
+      return;
+    text2.data = data;
   }
   let current_component;
   function set_current_component(component) {
