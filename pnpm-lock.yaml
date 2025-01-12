@@ -36,11 +36,11 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       vite:
-        specifier: ^5.0.0
-        version: 5.2.10(@types/node@20.12.7)
+        specifier: ^5.2.14
+        version: 5.2.14(@types/node@20.12.7)
       vite-plugin-monkey:
         specifier: ^3.4.1
-        version: 3.5.2(vite@5.2.10(@types/node@20.12.7))
+        version: 3.5.2(vite@5.2.14(@types/node@20.12.7))
 
 packages:
 
@@ -1038,8 +1038,8 @@ packages:
       vite:
         optional: true
 
-  vite@5.2.10:
-    resolution: {integrity: sha512-PAzgUZbP7msvQvqdSD+ErD5qGnSFiGOoWmV5yAKUEI0kdhjbH6nMWVyZQC/hSc4aXwc0oJ9aEdIiF9Oje0JFCw==}
+  vite@5.2.14:
+    resolution: {integrity: sha512-TFQLuwWLPms+NBNlh0D9LZQ+HXW471COABxw/9TEUBrjuHMo9BrYBPrN/SYAwIuVL+rLerycxiLT41t4f5MZpA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -1244,6 +1244,7 @@ snapshots:
 
   '@rollup/rollup-linux-x64-musl@4.30.1':
     optional: true
+
 
   '@rollup/rollup-win32-arm64-msvc@4.30.1':
     optional: true
@@ -2001,7 +2002,7 @@ snapshots:
 
   untildify@4.0.0: {}
 
-  vite-plugin-monkey@3.5.2(vite@5.2.10(@types/node@20.12.7)):
+  vite-plugin-monkey@3.5.2(vite@5.2.14(@types/node@20.12.7)):
     dependencies:
       acorn-walk: 8.3.2
       cross-spawn: 7.0.6
@@ -2012,9 +2013,9 @@ snapshots:
       picocolors: 1.0.0
       systemjs: 6.14.3
     optionalDependencies:
-      vite: 5.2.10(@types/node@20.12.7)
+      vite: 5.2.14(@types/node@20.12.7)
 
-  vite@5.2.10(@types/node@20.12.7):
+  vite@5.2.14(@types/node@20.12.7):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
@@ -2023,9 +2024,9 @@ snapshots:
       '@types/node': 20.12.7
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.2.10(@types/node@20.12.7)):
+  vitefu@0.2.5(vite@5.2.14(@types/node@20.12.7)):
     optionalDependencies:
-      vite: 5.2.10(@types/node@20.12.7)
+      vite: 5.2.14(@types/node@20.12.7)
 
   which@2.0.2:
     dependencies:
