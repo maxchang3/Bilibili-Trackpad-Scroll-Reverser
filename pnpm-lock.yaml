@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.0
-        version: 3.1.0(svelte@3.59.2)(vite@5.2.10(@types/node@20.12.7))
+        version: 3.1.0(svelte@3.59.2)(vite@5.2.14(@types/node@20.12.7))
       '@tsconfig/svelte':
         specifier: ^4.0.0
         version: 4.0.1
@@ -36,11 +36,11 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       vite:
-        specifier: ^5.0.0
-        version: 5.2.10(@types/node@20.12.7)
+        specifier: ^5.2.14
+        version: 5.2.14(@types/node@20.12.7)
       vite-plugin-monkey:
         specifier: ^3.4.1
-        version: 3.5.2(vite@5.2.10(@types/node@20.12.7))
+        version: 3.5.2(vite@5.2.14(@types/node@20.12.7))
 
 packages:
 
@@ -525,6 +525,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
@@ -550,6 +551,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -795,6 +797,7 @@ packages:
 
   rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup@4.15.0:
@@ -967,8 +970,8 @@ packages:
       vite:
         optional: true
 
-  vite@5.2.10:
-    resolution: {integrity: sha512-PAzgUZbP7msvQvqdSD+ErD5qGnSFiGOoWmV5yAKUEI0kdhjbH6nMWVyZQC/hSc4aXwc0oJ9aEdIiF9Oje0JFCw==}
+  vite@5.2.14:
+    resolution: {integrity: sha512-TFQLuwWLPms+NBNlh0D9LZQ+HXW471COABxw/9TEUBrjuHMo9BrYBPrN/SYAwIuVL+rLerycxiLT41t4f5MZpA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -1161,26 +1164,26 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.15.0':
     optional: true
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.0(svelte@3.59.2)(vite@5.2.10(@types/node@20.12.7)))(svelte@3.59.2)(vite@5.2.10(@types/node@20.12.7))':
+  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.0(svelte@3.59.2)(vite@5.2.14(@types/node@20.12.7)))(svelte@3.59.2)(vite@5.2.14(@types/node@20.12.7))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.1.0(svelte@3.59.2)(vite@5.2.10(@types/node@20.12.7))
+      '@sveltejs/vite-plugin-svelte': 3.1.0(svelte@3.59.2)(vite@5.2.14(@types/node@20.12.7))
       debug: 4.3.4
       svelte: 3.59.2
-      vite: 5.2.10(@types/node@20.12.7)
+      vite: 5.2.14(@types/node@20.12.7)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.1.0(svelte@3.59.2)(vite@5.2.10(@types/node@20.12.7))':
+  '@sveltejs/vite-plugin-svelte@3.1.0(svelte@3.59.2)(vite@5.2.14(@types/node@20.12.7))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.0(svelte@3.59.2)(vite@5.2.10(@types/node@20.12.7)))(svelte@3.59.2)(vite@5.2.10(@types/node@20.12.7))
+      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.0(svelte@3.59.2)(vite@5.2.14(@types/node@20.12.7)))(svelte@3.59.2)(vite@5.2.14(@types/node@20.12.7))
       debug: 4.3.4
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.9
       svelte: 3.59.2
       svelte-hmr: 0.16.0(svelte@3.59.2)
-      vite: 5.2.10(@types/node@20.12.7)
-      vitefu: 0.2.5(vite@5.2.10(@types/node@20.12.7))
+      vite: 5.2.14(@types/node@20.12.7)
+      vitefu: 0.2.5(vite@5.2.14(@types/node@20.12.7))
     transitivePeerDependencies:
       - supports-color
 
@@ -1845,7 +1848,7 @@ snapshots:
 
   untildify@4.0.0: {}
 
-  vite-plugin-monkey@3.5.2(vite@5.2.10(@types/node@20.12.7)):
+  vite-plugin-monkey@3.5.2(vite@5.2.14(@types/node@20.12.7)):
     dependencies:
       acorn-walk: 8.3.2
       cross-spawn: 7.0.3
@@ -1856,9 +1859,9 @@ snapshots:
       picocolors: 1.0.0
       systemjs: 6.14.3
     optionalDependencies:
-      vite: 5.2.10(@types/node@20.12.7)
+      vite: 5.2.14(@types/node@20.12.7)
 
-  vite@5.2.10(@types/node@20.12.7):
+  vite@5.2.14(@types/node@20.12.7):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
@@ -1867,9 +1870,9 @@ snapshots:
       '@types/node': 20.12.7
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.2.10(@types/node@20.12.7)):
+  vitefu@0.2.5(vite@5.2.14(@types/node@20.12.7)):
     optionalDependencies:
-      vite: 5.2.10(@types/node@20.12.7)
+      vite: 5.2.14(@types/node@20.12.7)
 
   which@2.0.2:
     dependencies:
