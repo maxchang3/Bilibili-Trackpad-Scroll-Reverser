@@ -23,7 +23,9 @@ export default defineConfig({
         match: [
           'https://www.bilibili.com/bangumi/play/*',
           'https://www.bilibili.com/video/*',
-          "https://www.bilibili.com/list/*"
+          'https://www.bilibili.com/list/*',
+          'https://www.bilibili.com/festival/*',
+          'https://www.bilibili.com/cheese/play/*',
         ],
         icon: 'https://www.bilibili.com/favicon.ico',
         "run-at": "document-start"
