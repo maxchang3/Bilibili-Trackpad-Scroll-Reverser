@@ -15,7 +15,7 @@ export default defineConfig({
     monkey({
       entry: 'src/main.ts',
       userscript: {
-        name: '哔哩哔哩触控板滚动反转',
+        name: 'BiliScrollReverser - 哔哩哔哩触控板滚动反转',
         namespace: 'http://zhangmaimai.com/',
         license: 'MIT',
         author: 'MaxChang3',

@@ -63,8 +63,8 @@
 <Popup bind:this={popup}>
     <main>
         <div class="header">
-            <h1>Bilibili-Trackpad-Scroll-Reverser</h1>
-            <a href="https://github.com/maxchang3/Bilibili-Trackpad-Scroll-Reverser" target="_blank" rel="noopener noreferrer" class="repo-link" title="Github">
+            <h1>BiliScrollReverser</h1>
+            <a href="https://github.com/maxchang3/BiliScrollReverser" target="_blank" rel="noopener noreferrer" class="repo-link" title="Github">
                 <img src="https://github.com/favicon.ico" alt="GitHub" width="24" height="24">
             </a>
         </div>

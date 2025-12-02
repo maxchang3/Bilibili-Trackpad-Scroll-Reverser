@@ -3,7 +3,7 @@
 </p>
 
 # 哔哩哔哩触控板滚动反转
-# Bilibili-Trackpad-Scroll-Reverser
+# BiliScrollReverser
 
 > 自然滚动下，音量的调节应该也是自然的。
 
@@ -22,8 +22,8 @@
 ## 安装
 
 [[Greasyfork](https://greasyfork.org/zh-CN/scripts/432783)]
-[[Github Release](https://github.com/MaxChang3/Bilibili-Trackpad-Scroll-Reverser/releases/latest/download/bilibili-trackpad-scroll-reverser.user.js)]
-[[Github Pages](https://maxchang3.github.io/Bilibili-Trackpad-Scroll-Reverser/bilibili-trackpad-scroll-reverser.user.js)]
+[[Github Release](https://github.com/MaxChang3/BiliScrollReverser/releases/latest/download/BiliScrollReverser.user.js)]
+[[Github Pages](https://maxchang3.github.io/BiliScrollReverser/BiliScrollReverser.user.js)]
 
 ## 使用建议
 
