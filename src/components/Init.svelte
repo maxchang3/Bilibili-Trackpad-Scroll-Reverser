@@ -106,7 +106,7 @@
                         <div class="calibrate-panel">
                             <div class="instruction">
                                 <p>请使用<strong>最小刻度</strong>滚动<strong>鼠标滚轮</strong></p>
-                                <p class="small-text">请优先选择大多数情况下出现的最小整数值。例如：若通常得到 120，而偶尔出现 118.79 或 1.48 等数值，请忽略后者。</p>
+                                <p class="small-text">请不要快速连续滚动，优先选择大多数情况下出现的最小整数值。</p>
                             </div>
 
                             <div class="calibrate-area" on:wheel={calibrate}>
