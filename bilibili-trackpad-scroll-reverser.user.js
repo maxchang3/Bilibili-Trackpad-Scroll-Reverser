@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         哔哩哔哩触控板滚动反转
 // @namespace    http://zhangmaimai.com/
-// @version      2.2.0
+// @version      3.0.0
 // @author       MaxChang3
 // @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
 // @license      MIT
@@ -12,8 +12,8 @@
 // @match        https://www.bilibili.com/festival/*
 // @match        https://www.bilibili.com/cheese/play/*
 // @grant        GM_addStyle
-// @grant        GM_deleteValue
 // @grant        GM_getValue
+// @grant        GM_info
 // @grant        GM_registerMenuCommand
 // @grant        GM_setValue
 // @run-at       document-start
@@ -24,18 +24,41 @@
 
   const d=new Set;const e = async e=>{d.has(e)||(d.add(e),(t=>{typeof GM_addStyle=="function"?GM_addStyle(t):(document.head||document.documentElement).appendChild(document.createElement("style")).append(t);})(e));};
 
-  e(" dialog.svelte-1p4edfu{padding:0;border:0;height:80%;width:80%;overflow:hidden;position:fixed;-webkit-user-select:none;user-select:none}dialog.svelte-1p4edfu::backdrop{background-color:#121212a6}.inner.svelte-1p4edfu{width:100%;height:100%}.inner.svelte-1p4edfu:focus{outline:none}main.svelte-1ulmjhy{height:100%;padding:25px}.calibrate-btn.svelte-1ulmjhy{display:flex;flex-direction:row}button.svelte-1ulmjhy{box-sizing:border-box;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;width:4rem;font-size:1.1rem;background:#479fd1;color:#fff;border:0;margin-right:5px;padding:10px}button.svelte-1ulmjhy:focus{outline:none} ");
+  e(" dialog.svelte-1p4edfu{padding:0;border:none;border-radius:16px;height:auto;max-height:90vh;width:90%;max-width:600px;overflow:auto;position:fixed;-webkit-user-select:none;user-select:none;box-shadow:0 0 10px #0000001a}dialog.svelte-1p4edfu:not([open]){display:none}dialog.svelte-1p4edfu::backdrop{background:#0009}.inner.svelte-1p4edfu{width:100%;height:auto;background:#fff;border-radius:16px}.inner.svelte-1p4edfu:focus{outline:none}@media (max-width: 768px){dialog.svelte-1p4edfu{width:95%;height:auto;max-height:95vh;border-radius:12px}.inner.svelte-1p4edfu{border-radius:12px}}main.svelte-1ulmjhy{--primary: #007bff;--primary-hover: #0056b3;--secondary: #6c757d;--secondary-hover: #545b62;--text: #2c3e50;--text-light: #7f8c8d;--bg-light: #f8f9fa;--border: #dee2e6;--success: #28a745;padding:20px;height:auto;font-family:system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.5}.header.svelte-1ulmjhy{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #ecf0f1}h1.svelte-1ulmjhy{margin:0;font-size:1.5rem;font-weight:600}.content.svelte-1ulmjhy{text-align:center}.option-group.svelte-1ulmjhy{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}.option-btn.svelte-1ulmjhy{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px;background:#fff;border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:left}.option-btn.svelte-1ulmjhy:hover{background:var(--bg-light)}.option-btn.active.svelte-1ulmjhy{border-color:var(--primary);background:#f0f7ff}.badge.svelte-1ulmjhy{background:var(--primary);color:#fff;padding:4px 8px;border-radius:4px;font-size:.8rem;font-weight:600;white-space:nowrap}.btn-content.svelte-1ulmjhy{display:flex;flex-direction:column;gap:4px}.btn-title.svelte-1ulmjhy{font-weight:600;font-size:1.1rem}.btn-desc.svelte-1ulmjhy{color:var(--text-light);font-size:.9rem}.note.svelte-1ulmjhy{background:#fff3cd;color:#856404;padding:12px;border-radius:8px;font-size:.9rem;border:1px solid #ffeaa7}.instruction.svelte-1ulmjhy{background:#e3f2fd;color:#0c5460;padding:16px;border-radius:8px;margin-bottom:16px}.instruction.svelte-1ulmjhy p:where(.svelte-1ulmjhy){margin:0;font-size:1.1rem}.calibrate-wrapper.svelte-1ulmjhy{display:flex;flex-direction:column;gap:12px}.calibrate-panel.svelte-1ulmjhy{background:var(--bg-light);padding:16px;border-radius:12px;border:1px solid var(--border);animation:svelte-1ulmjhy-slideDown .2s ease-out}@keyframes svelte-1ulmjhy-slideDown{0%{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}.small-text.svelte-1ulmjhy{font-size:.85rem;color:var(--text-light);margin-top:8px}.calibrate-area.svelte-1ulmjhy{background:#e3f2fd;border:2px dashed #90caf9;border-radius:8px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:ns-resize;transition:all .2s;color:#1976d2;margin-bottom:16px}.calibrate-area.svelte-1ulmjhy:hover{background:#bbdefb;border-color:#64b5f6}.calibrate-icon.svelte-1ulmjhy{opacity:.8}.status.svelte-1ulmjhy{background:#fff;padding:16px;border-radius:8px;margin:16px 0;display:flex;flex-direction:column;gap:12px;border:1px solid var(--border)}.status-item.svelte-1ulmjhy{display:flex;justify-content:space-between;align-items:center}.label.svelte-1ulmjhy{font-weight:600;color:#495057}.value.svelte-1ulmjhy{font-family:monospace;background:#fff;padding:4px 8px;border-radius:4px;border:1px solid var(--border);font-size:1.1rem}.highlight.svelte-1ulmjhy{background:var(--success);color:#fff;border-color:var(--success)}.action-buttons.svelte-1ulmjhy{display:flex;justify-content:center;gap:12px}.btn.svelte-1ulmjhy{padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:500;color:#fff;font-size:1rem}.btn.primary.svelte-1ulmjhy{background:var(--primary)}.btn.primary.svelte-1ulmjhy:hover:not(:disabled){background:var(--primary-hover)}.btn.secondary.svelte-1ulmjhy{background:var(--secondary)}.btn.secondary.svelte-1ulmjhy:hover{background:var(--secondary-hover)}.btn.svelte-1ulmjhy:disabled{opacity:.6;cursor:not-allowed;background:#dee2e6;color:#6c757d}.repo-link.svelte-1ulmjhy{display:flex;align-items:center;justify-content:center;opacity:.6;transition:opacity .2s}.repo-link.svelte-1ulmjhy:hover{opacity:1}.repo-link.svelte-1ulmjhy img:where(.svelte-1ulmjhy){border-radius:50%} ");
 
-  var _GM_deleteValue = (() => typeof GM_deleteValue != "undefined" ? GM_deleteValue : void 0)();
   var _GM_getValue = (() => typeof GM_getValue != "undefined" ? GM_getValue : void 0)();
+  var _GM_info = (() => typeof GM_info != "undefined" ? GM_info : void 0)();
   var _GM_registerMenuCommand = (() => typeof GM_registerMenuCommand != "undefined" ? GM_registerMenuCommand : void 0)();
   var _GM_setValue = (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
   const getMouseMinDelta = () => _GM_getValue("MOUSE_MIN", void 0);
   const setMouseMinDelta = (number) => _GM_setValue("MOUSE_MIN", number);
-  const deleteMouseMinDelta = () => _GM_deleteValue("MOUSE_MIN");
-  const MOUSE_MIN = getMouseMinDelta() || -1;
+  const { name: scriptname, version: scriptversion } = _GM_info.script;
+  const log = (logMethod, tag, ...args) => {
+    const colors = {
+      log: "#2c3e50",
+      error: "#ff4500"
+    };
+    const fontFamily = "font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;";
+    console[logMethod](
+      `%c ${scriptname} %c v${scriptversion} %c ${tag} `,
+      `padding: 2px 6px; border-radius: 3px 0 0 3px; color: #fff; background: #FF6699; font-weight: bold; ${fontFamily}`,
+      `padding: 2px 6px; color: #fff; background: #FF9999; font-weight: bold; ${fontFamily}`,
+      `padding: 2px 6px; border-radius: 0 3px 3px 0; color: #fff; background: ${colors[logMethod]}; font-weight: bold; ${fontFamily}`,
+      ...args
+    );
+  };
+  const logger = {
+    log: (...args) => log("log", "日志", ...args),
+    error: (...args) => log("error", "错误", ...args)
+  };
+  let MOUSE_MIN = getMouseMinDelta() || -1;
   let container;
-  console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] MOUSE_MIN: ${MOUSE_MIN}`);
+  logger.log(MOUSE_MIN === -1 ? "简单模式" : "校准模式");
+  logger.log(`阈值: ${MOUSE_MIN}`);
+  const updateMouseMinDelta = (val) => {
+    MOUSE_MIN = val ?? -1;
+    logger.log(`更新阈值: ${MOUSE_MIN}`);
+  };
   const isFullScreen = () => {
     if (!container) container = player.getElements().container;
     return !!document.fullscreenElement || container.dataset.screen === "web";
@@ -49,36 +72,27 @@
     const [type, evt, ...rest] = args;
     if (thisArg instanceof HTMLElement || !(evt instanceof Function) || type !== "mousewheel" && type !== "wheel") return Reflect.apply(target, thisArg, args);
     const evtWrapper = (e) => {
-      if (!isFullScreen() || !isTrackpad(e)) return Reflect.apply(evt, thisArg, [e]);
-      const proxy2 = new Proxy(e, {
-        get: (obj, prop) => typeof prop === "symbol" || prop !== "wheelDelta" ? Reflect.get(obj, prop) : Reflect.get(obj, "deltaY") * 10
+      try {
+        if (!isFullScreen() || !isTrackpad(e)) return Reflect.apply(evt, thisArg, [e]);
+        const proxy2 = new Proxy(e, {
+          get: (obj, prop) => typeof prop === "symbol" || prop !== "wheelDelta" ? Reflect.get(obj, prop) : Reflect.get(obj, "deltaY") * 10
 });
-      return Reflect.apply(evt, thisArg, [proxy2]);
+        return Reflect.apply(evt, thisArg, [proxy2]);
+      } catch (error) {
+        logger.error("Wheel 事件处理失败:", error);
+        return Reflect.apply(evt, thisArg, [e]);
+      }
     };
     return Reflect.apply(target, thisArg, [type, evtWrapper, ...rest]);
   };
   const setupHook = () => {
-    EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler });
+    try {
+      EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler });
+      logger.log("Hook 成功");
+    } catch (error) {
+      logger.error("Hook 失败:", error);
+    }
   };
-  const registerMenus = () => {
-    _GM_registerMenuCommand("重置设置", () => {
-      deleteMouseMinDelta();
-      location.reload();
-    });
-  };
-  const PUBLIC_VERSION = "5";
-  if (typeof window !== "undefined") {
-    ((window.__svelte ??= {}).v ??= new Set()).add(PUBLIC_VERSION);
-  }
-  let legacy_mode_flag = false;
-  let tracing_mode_flag = false;
-  function enable_legacy_mode_flag() {
-    legacy_mode_flag = true;
-  }
-  enable_legacy_mode_flag();
-  const TEMPLATE_FRAGMENT = 1;
-  const TEMPLATE_USE_IMPORT_NODE = 1 << 1;
-  const UNINITIALIZED = Symbol();
   const DEV = false;
   var is_array = Array.isArray;
   var index_of = Array.prototype.indexOf;
@@ -186,6 +200,7 @@
       throw new Error(`https://svelte.dev/e/svelte_boundary_reset_onerror`);
     }
   }
+  const UNINITIALIZED = Symbol();
   function svelte_boundary_reset_noop() {
     {
       console.warn(`https://svelte.dev/e/svelte_boundary_reset_noop`);
@@ -199,6 +214,11 @@
   }
   function safe_equals(value) {
     return !safe_not_equal(value, this.v);
+  }
+  let legacy_mode_flag = false;
+  let tracing_mode_flag = false;
+  function enable_legacy_mode_flag() {
+    legacy_mode_flag = true;
   }
   let component_context = null;
   function set_component_context(context) {
@@ -1048,7 +1068,7 @@ UNINITIALIZED
     };
     return signal;
   }
-function async_derived(fn, location2) {
+function async_derived(fn, location) {
     let parent = (
 active_effect
     );
@@ -1554,18 +1574,6 @@ function get_next_sibling(node) {
   function child(node, is_text) {
     {
       return get_first_child(node);
-    }
-  }
-  function first_child(fragment, is_text = false) {
-    {
-      var first = (
-
-get_first_child(
-fragment
-        )
-      );
-      if (first instanceof Comment && first.data === "") return get_next_sibling(first);
-      return first;
     }
   }
   function sibling(node, count = 1, is_text = false) {
@@ -2307,6 +2315,10 @@ dep
       }
     }
   }
+  const PASSIVE_EVENTS = ["touchstart", "touchmove"];
+  function is_passive_event(name) {
+    return PASSIVE_EVENTS.includes(name);
+  }
   const all_registered_events = new Set();
   const root_event_handles = new Set();
   function create_event(event_name, dom, handler, options = {}) {
@@ -2439,34 +2451,30 @@ active_effect
     }
   }
 function from_html(content, flags2) {
-    var is_fragment = (flags2 & TEMPLATE_FRAGMENT) !== 0;
-    var use_import_node = (flags2 & TEMPLATE_USE_IMPORT_NODE) !== 0;
     var node;
     var has_start = !content.startsWith("<!>");
     return () => {
       if (node === void 0) {
         node = create_fragment_from_html(has_start ? content : "<!>" + content);
-        if (!is_fragment) node =
+        node =
 
 get_first_child(node);
       }
       var clone = (
-use_import_node || is_firefox ? document.importNode(node, true) : node.cloneNode(true)
+is_firefox ? document.importNode(node, true) : node.cloneNode(true)
       );
-      if (is_fragment) {
-        var start = (
-
-get_first_child(clone)
-        );
-        var end = (
-clone.lastChild
-        );
-        assign_nodes(start, end);
-      } else {
+      {
         assign_nodes(clone, clone);
       }
       return clone;
     };
+  }
+  function text(value = "") {
+    {
+      var t = create_text(value + "");
+      assign_nodes(t, t);
+      return t;
+    }
   }
   function append(anchor, dom) {
     if (anchor === null) {
@@ -2476,15 +2484,11 @@ clone.lastChild
 dom
     );
   }
-  const PASSIVE_EVENTS = ["touchstart", "touchmove"];
-  function is_passive_event(name) {
-    return PASSIVE_EVENTS.includes(name);
-  }
-  function set_text(text, value) {
+  function set_text(text2, value) {
     var str = value == null ? "" : typeof value === "object" ? value + "" : value;
-    if (str !== (text.__t ??= text.nodeValue)) {
-      text.__t = str;
-      text.nodeValue = str + "";
+    if (str !== (text2.__t ??= text2.nodeValue)) {
+      text2.__t = str;
+      text2.nodeValue = str + "";
     }
   }
   function mount(component, options) {
@@ -2656,27 +2660,6 @@ current_batch
       }
     }
   }
-  function onMount(fn) {
-    if (component_context === null) {
-      lifecycle_outside_component();
-    }
-    if (legacy_mode_flag && component_context.l !== null) {
-      init_update_callbacks(component_context).m.push(fn);
-    } else {
-      user_effect(() => {
-        const cleanup = untrack(fn);
-        if (typeof cleanup === "function") return (
-cleanup
-        );
-      });
-    }
-  }
-  function init_update_callbacks(context) {
-    var l = (
-context.l
-    );
-    return l.u ??= { a: [], b: [], m: [] };
-  }
   function if_block(node, fn, elseif = false) {
     var branches = new BranchManager(node);
     var flags2 = elseif ? EFFECT_TRANSPARENT : 0;
@@ -2705,6 +2688,28 @@ context.l
     else {
       slot_fn(anchor, is_interop ? () => slot_props : slot_props);
     }
+  }
+  function to_class(value, hash, directives) {
+    var classname = value == null ? "" : "" + value;
+    {
+      classname = classname ? classname + " " + hash : hash;
+    }
+    return classname === "" ? null : classname;
+  }
+  function set_class(dom, is_html, value, hash, prev_classes, next_classes) {
+    var prev = dom.__className;
+    if (prev !== value || prev === void 0) {
+      var next_class_name = to_class(value, hash);
+      {
+        if (next_class_name == null) {
+          dom.removeAttribute("class");
+        } else {
+          dom.className = next_class_name;
+        }
+      }
+      dom.__className = value;
+    }
+    return next_classes;
   }
   function bind_prop(props, prop, value) {
     var desc = get_descriptor(props, prop);
@@ -2743,6 +2748,15 @@ context.l
       };
     });
     return element_or_component;
+  }
+  function stopPropagation(fn) {
+    return function(...args) {
+      var event2 = (
+args[0]
+      );
+      event2.stopPropagation();
+      return fn?.apply(this, args);
+    };
   }
   function init(immutable = false) {
     const context = (
@@ -2799,17 +2813,64 @@ component_context
     }
     props();
   }
+  function onMount(fn) {
+    if (component_context === null) {
+      lifecycle_outside_component();
+    }
+    if (legacy_mode_flag && component_context.l !== null) {
+      init_update_callbacks(component_context).m.push(fn);
+    } else {
+      user_effect(() => {
+        const cleanup = untrack(fn);
+        if (typeof cleanup === "function") return (
+cleanup
+        );
+      });
+    }
+  }
+  function init_update_callbacks(context) {
+    var l = (
+context.l
+    );
+    return l.u ??= { a: [], b: [], m: [] };
+  }
+  const PUBLIC_VERSION = "5";
+  if (typeof window !== "undefined") {
+    ((window.__svelte ??= {}).v ??= new Set()).add(PUBLIC_VERSION);
+  }
+  enable_legacy_mode_flag();
   var root = from_html(`<div><dialog class="svelte-1p4edfu"><div class="inner svelte-1p4edfu"><!></div></dialog></div>`);
   function Popup($$anchor, $$props) {
     push($$props, false);
     let dialog = mutable_source();
     const showModal = () => {
       get(dialog).showModal();
+      document.body.style.overflow = "hidden";
     };
     const closeModal = () => {
       get(dialog).close();
+      document.body.style.overflow = "";
     };
-    onMount(() => get(dialog).showModal());
+    onMount(() => {
+      showModal();
+      const handleEscape = (e) => {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          closeModal();
+        }
+      };
+      get(dialog).addEventListener("keydown", handleEscape);
+      const handleBackdropClick = (e) => {
+        if (e.target === get(dialog)) {
+          closeModal();
+        }
+      };
+      get(dialog).addEventListener("click", handleBackdropClick);
+      return () => {
+        get(dialog)?.removeEventListener("keydown", handleEscape);
+        get(dialog)?.removeEventListener("click", handleBackdropClick);
+      };
+    });
     var $$exports = { showModal, closeModal };
     init();
     var div = root();
@@ -2823,24 +2884,44 @@ component_context
     bind_prop($$props, "closeModal", closeModal);
     return pop($$exports);
   }
-  var root_2 = from_html(`<h1>请使用 <u>最小</u> 刻度滚动 <u>鼠标滚轮</u> ！</h1> <h1>最小 |deltaY| <u> </u> 【当前<u> </u> 】（请优先选择整数值）</h1> <div class="calibrate-btn svelte-1ulmjhy"><button class="svelte-1ulmjhy">重置</button> <button class="svelte-1ulmjhy">确定</button></div>`, 1);
-  var root_1 = from_html(`<main class="svelte-1ulmjhy"><h1>Bilibili Trackpad Scroll Reverser</h1> <h2>初始化，请选择你的反转策略：</h2> <button class="btn svelte-1ulmjhy">简单</button> <h3>（直接使用，默认 deltaY 100以下为触控)</h3> <button class="btn svelte-1ulmjhy">校准</button> <h3>（校准使用，根据提示移动鼠标）【注意：对于 Windows 设备如果鼠标任意滚动幅度下均为整数值，请暂时选择简单模式】</h3> <!></main>`);
+  var root_3 = from_html(`<span class="badge svelte-1ulmjhy">已启用</span>`);
+  var root_2 = from_html(`<button><div class="btn-content svelte-1ulmjhy"><span class="btn-title svelte-1ulmjhy">简单模式</span> <span class="btn-desc svelte-1ulmjhy">默认 deltaY &lt; 100 为触控板</span></div> <!></button>`);
+  var root_7 = from_html(`<span class="badge svelte-1ulmjhy">已启用</span>`);
+  var root_4 = from_html(`<button><div class="btn-content svelte-1ulmjhy"><span class="btn-title svelte-1ulmjhy">校验模式</span> <span class="btn-desc svelte-1ulmjhy"><!></span></div> <!></button>`);
+  var root_8 = from_html(`<div class="calibrate-panel svelte-1ulmjhy"><div class="instruction svelte-1ulmjhy"><p class="svelte-1ulmjhy">请使用<strong>最小刻度</strong>滚动<strong>鼠标滚轮</strong></p> <p class="small-text svelte-1ulmjhy">请优先选择大多数情况下出现的最小整数值。例如：若通常得到 120，而偶尔出现 118.79 或 1.48 等数值，请忽略后者。</p></div> <div class="calibrate-area svelte-1ulmjhy"><div class="calibrate-icon svelte-1ulmjhy"><svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M12 2C8.69 2 6 4.69 6 8v8c0 3.31 2.69 6 6 6s6-2.69 6-6V8c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4v8c0 2.21-1.79 4-4 4s-4-1.79-4-4V8c0-2.21 1.79-4 4-4zm-1 2v4h2V6h-2z"></path></svg></div> <span>在此区域滚动鼠标滚轮</span></div> <div class="status svelte-1ulmjhy"><div class="status-item svelte-1ulmjhy"><span class="label svelte-1ulmjhy">最小 deltaY 绝对值:</span> <span class="value highlight svelte-1ulmjhy"> </span></div> <div class="status-item svelte-1ulmjhy"><span class="label svelte-1ulmjhy">当前值:</span> <span class="value svelte-1ulmjhy"> </span></div></div> <div class="action-buttons svelte-1ulmjhy"><button class="btn secondary svelte-1ulmjhy">取消</button> <button class="btn secondary svelte-1ulmjhy">重置</button> <button class="btn primary svelte-1ulmjhy">确定</button></div></div>`);
+  var root_1 = from_html(`<main class="svelte-1ulmjhy"><div class="header svelte-1ulmjhy"><h1 class="svelte-1ulmjhy">Bilibili-Trackpad-Scroll-Reverser</h1> <a href="https://github.com/maxchang3/Bilibili-Trackpad-Scroll-Reverser" target="_blank" rel="noopener noreferrer" class="repo-link svelte-1ulmjhy" title="Github"><img src="https://github.com/favicon.ico" alt="GitHub" width="24" height="24" class="svelte-1ulmjhy"/></a></div> <div class="content svelte-1ulmjhy"><div class="option-group svelte-1ulmjhy"><!> <div class="calibrate-wrapper svelte-1ulmjhy"><!> <!></div></div> <div class="note svelte-1ulmjhy"><strong>注意：</strong>如果鼠标滚动均为整数值，建议选择简单模式</div></div></main>`);
   function Init($$anchor, $$props) {
     push($$props, false);
     let openCalibrate = mutable_source(false);
     let minDelta = mutable_source(Infinity);
     let currentDelta = mutable_source();
     let popup = mutable_source();
+    let existingConfig = mutable_source(getMouseMinDelta());
     player.on("Player_Canplay", () => player.pause());
+    const show = () => {
+      set(existingConfig, getMouseMinDelta());
+      set(openCalibrate, false);
+      set(minDelta, Infinity);
+      get(popup).showModal();
+    };
     const setMinDelta = (delta) => {
       if (delta === Infinity) {
-        alert("不合法的值，请滚动鼠标获取最小整数 delta!");
+        set(minDelta, Infinity);
         return;
       }
       setMouseMinDelta(delta);
-      alert(`已经设置为【${getMouseMinDelta()}】(-1 为简单模式)`);
-      get(popup).closeModal();
-      location.reload();
+      updateMouseMinDelta(delta);
+      set(existingConfig, delta);
+      set(openCalibrate, false);
+    };
+    const startCalibrate = () => {
+      set(openCalibrate, true);
+      set(minDelta, Infinity);
+      set(currentDelta, 0);
+    };
+    const cancelCalibrate = () => {
+      set(openCalibrate, false);
+      set(minDelta, Infinity);
     };
     const calibrate = (e) => {
       e.preventDefault();
@@ -2856,46 +2937,117 @@ component_context
       }
       return placeholder;
     };
+    var $$exports = { show };
     init();
     bind_this(
       Popup($$anchor, {
         children: ($$anchor2, $$slotProps) => {
           var main = root_1();
-          var button = sibling(child(main), 4);
-          var button_1 = sibling(button, 4);
-          var node = sibling(button_1, 4);
+          var div = sibling(child(main), 2);
+          var div_1 = child(div);
+          var node = child(div_1);
           {
-            var consequent = ($$anchor3) => {
-              var fragment_1 = root_2();
-              var h1 = sibling(first_child(fragment_1), 2);
-              var u = sibling(child(h1));
-              var text = child(u);
-              var u_1 = sibling(u, 2);
-              var text_1 = child(u_1);
-              var div = sibling(h1, 2);
-              var button_2 = child(div);
+            var consequent_1 = ($$anchor3) => {
+              var button = root_2();
+              var node_1 = sibling(child(button), 2);
+              {
+                var consequent = ($$anchor4) => {
+                  var span = root_3();
+                  append($$anchor4, span);
+                };
+                if_block(node_1, ($$render) => {
+                  if (get(existingConfig) === -1) $$render(consequent);
+                });
+              }
+              template_effect(() => set_class(button, 1, `option-btn ${get(existingConfig) === -1 ? "active" : ""}`, "svelte-1ulmjhy"));
+              event("click", button, () => {
+                setMinDelta(-1);
+                set(openCalibrate, false);
+              });
+              append($$anchor3, button);
+            };
+            if_block(node, ($$render) => {
+              if (!get(openCalibrate)) $$render(consequent_1);
+            });
+          }
+          var div_2 = sibling(node, 2);
+          var node_2 = child(div_2);
+          {
+            var consequent_4 = ($$anchor3) => {
+              var button_1 = root_4();
+              var div_3 = child(button_1);
+              var span_1 = sibling(child(div_3), 2);
+              var node_3 = child(span_1);
+              {
+                var consequent_2 = ($$anchor4) => {
+                  var text$1 = text();
+                  template_effect(() => set_text(text$1, `当前阈值: ${get(existingConfig) ?? ""} (点击重新校验)`));
+                  append($$anchor4, text$1);
+                };
+                var alternate = ($$anchor4) => {
+                  var text_1 = text("根据鼠标滚轮校准检测阈值");
+                  append($$anchor4, text_1);
+                };
+                if_block(node_3, ($$render) => {
+                  if (get(existingConfig) !== void 0 && get(existingConfig) !== -1) $$render(consequent_2);
+                  else $$render(alternate, false);
+                });
+              }
+              var node_4 = sibling(div_3, 2);
+              {
+                var consequent_3 = ($$anchor4) => {
+                  var span_2 = root_7();
+                  append($$anchor4, span_2);
+                };
+                if_block(node_4, ($$render) => {
+                  if (get(existingConfig) !== void 0 && get(existingConfig) !== -1) $$render(consequent_3);
+                });
+              }
+              template_effect(() => set_class(button_1, 1, `option-btn ${get(existingConfig) !== void 0 && get(existingConfig) !== -1 || get(openCalibrate) ? "active" : ""}`, "svelte-1ulmjhy"));
+              event("click", button_1, startCalibrate);
+              append($$anchor3, button_1);
+            };
+            if_block(node_2, ($$render) => {
+              if (!get(openCalibrate)) $$render(consequent_4);
+            });
+          }
+          var node_5 = sibling(node_2, 2);
+          {
+            var consequent_5 = ($$anchor3) => {
+              var div_4 = root_8();
+              var div_5 = sibling(child(div_4), 2);
+              var div_6 = sibling(div_5, 2);
+              var div_7 = child(div_6);
+              var span_3 = sibling(child(div_7), 2);
+              var text_2 = child(span_3);
+              var div_8 = sibling(div_7, 2);
+              var span_4 = sibling(child(div_8), 2);
+              var text_3 = child(span_4);
+              var div_9 = sibling(div_6, 2);
+              var button_2 = child(div_9);
               var button_3 = sibling(button_2, 2);
+              var button_4 = sibling(button_3, 2);
               template_effect(
                 ($0, $1) => {
-                  set_text(text, $0);
-                  set_text(text_1, $1);
+                  set_text(text_2, $0);
+                  set_text(text_3, $1);
+                  button_4.disabled = get(minDelta) === Infinity;
                 },
                 [
                   () => isValid(get(minDelta)),
                   () => isValid(get(currentDelta))
                 ]
               );
-              event("click", button_2, () => set(minDelta, Infinity));
-              event("click", button_3, () => setMinDelta(get(minDelta)));
-              append($$anchor3, fragment_1);
+              event("wheel", div_5, calibrate);
+              event("click", button_2, stopPropagation(cancelCalibrate));
+              event("click", button_3, stopPropagation(() => set(minDelta, Infinity)));
+              event("click", button_4, stopPropagation(() => setMinDelta(get(minDelta))));
+              append($$anchor3, div_4);
             };
-            if_block(node, ($$render) => {
-              if (get(openCalibrate) == true) $$render(consequent);
+            if_block(node_5, ($$render) => {
+              if (get(openCalibrate)) $$render(consequent_5);
             });
           }
-          event("click", button, () => setMinDelta(-1));
-          event("click", button_1, () => set(openCalibrate, true));
-          event("wheel", main, calibrate);
           append($$anchor2, main);
         },
         $$slots: { default: true },
@@ -2904,8 +3056,25 @@ component_context
       ($$value) => set(popup, $$value),
       () => get(popup)
     );
-    pop();
+    bind_prop($$props, "show", show);
+    return pop($$exports);
   }
+  let app = null;
+  let appContainer = null;
+  const registerMenus = () => {
+    _GM_registerMenuCommand("配置", () => {
+      if (app) {
+        app.show();
+        return;
+      }
+      document.body.style.overflow = "hidden";
+      appContainer = document.createElement("div");
+      document.body.append(appContainer);
+      app = mount(Init, {
+        target: appContainer
+      });
+    });
+  };
   setupHook();
   registerMenus();
   if (getMouseMinDelta() === void 0) {
@@ -2913,9 +3082,9 @@ component_context
       document.body.style.overflow = "hidden";
       mount(Init, {
         target: (() => {
-          const app = document.createElement("div");
-          document.body.append(app);
-          return app;
+          const app2 = document.createElement("div");
+          document.body.append(app2);
+          return app2;
         })()
       });
     };
