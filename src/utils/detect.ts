@@ -1,14 +1,16 @@
 import { getMouseMinDelta } from "@/utils/data"
+import logger from "@/utils/logger"
 
 let MOUSE_MIN = getMouseMinDelta() || -1
 
 let container: HTMLDivElement
 
-console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] MOUSE_MIN: ${MOUSE_MIN}`)
+logger.log(MOUSE_MIN === -1 ? '简单模式' : '校准模式')
+logger.log(`阈值: ${MOUSE_MIN}`)
 
 export const updateMouseMinDelta = (val: number | undefined) => {
     MOUSE_MIN = val ?? -1
-    console.log(`[BILIBILI-TRACKPAD-SCROLL-REVERSER] Updated MOUSE_MIN: ${MOUSE_MIN}`)
+    logger.log(`更新阈值: ${MOUSE_MIN}`)
 }
 
 export const isFullScreen = () => {
