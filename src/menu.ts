@@ -1,6 +1,6 @@
 import { GM_registerMenuCommand } from "$"
 import { mount } from "svelte"
-import App from '@/components/Init.svelte'
+import App from '@/components/Config.svelte'
 
 let app: any = null
 let appContainer: HTMLElement | null = null

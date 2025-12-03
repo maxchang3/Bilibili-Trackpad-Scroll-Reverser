@@ -1,7 +1,7 @@
 import { setupHook } from "@/hook"
 import { registerMenus } from "@/menu"
 import { getMouseMinDelta } from "@/utils/data"
-import App from '@/components/Init.svelte'
+import App from '@/components/Config.svelte'
 import { mount } from "svelte"
 
 setupHook()
