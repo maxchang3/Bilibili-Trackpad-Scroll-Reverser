@@ -8,9 +8,8 @@ let minDelta: number = Infinity
 let currentDelta: number, popup: Popup
 let existingConfig = getMouseMinDelta()
 
-player.on('Player_Canplay', () => player.pause())
-
 export const show = () => {
+    player.pause()
     existingConfig = getMouseMinDelta()
     openCalibrate = false
     minDelta = Infinity
@@ -102,7 +101,7 @@ const isValid = (num: number | undefined, placeholder: string = '未设置') => 
                         <div class="calibrate-panel">
                             <div class="instruction">
                                 <p>请使用<strong>最小刻度</strong>滚动<strong>鼠标滚轮</strong></p>
-                                <p class="small-text">请不要快速连续滚动，优先选择大多数情况下出现的最小整数值。</p>
+                                <p class="small-text">请不要快速连续滚动，优先选择多数情况下出现的最小整数值。</p>
                             </div>
 
                             <div class="calibrate-area" on:wheel={calibrate}>
