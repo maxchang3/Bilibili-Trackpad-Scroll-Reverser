@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && vite build --mode min",
+    "build:min": "vite build --mode min",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "dev": "vite",
     "lint": "biome check",
