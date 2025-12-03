@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BiliScrollReverser - 哔哩哔哩触控板滚动反转
 // @namespace    http://zhangmaimai.com/
-// @version      3.0.1
+// @version      3.0.2
 // @author       MaxChang3
 // @description  优化 b 站视频音量调节在触控板上的体验。使用此脚本后，在 b 站视频全屏界面中，使用触控板向下滚动将减少音量。（未安装时为增大）
 // @license      MIT
@@ -24,75 +24,8 @@
 
   const d=new Set;const e = async e=>{d.has(e)||(d.add(e),(t=>{typeof GM_addStyle=="function"?GM_addStyle(t):(document.head||document.documentElement).appendChild(document.createElement("style")).append(t);})(e));};
 
-  e(" dialog.svelte-1p4edfu{padding:0;border:none;border-radius:16px;height:auto;max-height:90vh;width:90%;max-width:600px;overflow:auto;position:fixed;-webkit-user-select:none;user-select:none;box-shadow:0 0 10px #0000001a}dialog.svelte-1p4edfu:not([open]){display:none}dialog.svelte-1p4edfu::backdrop{background:#0009}.inner.svelte-1p4edfu{width:100%;height:auto;background:#fff;border-radius:16px}.inner.svelte-1p4edfu:focus{outline:none}@media (max-width: 768px){dialog.svelte-1p4edfu{width:95%;height:auto;max-height:95vh;border-radius:12px}.inner.svelte-1p4edfu{border-radius:12px}}main.svelte-1ulmjhy{--primary: #007bff;--primary-hover: #0056b3;--secondary: #6c757d;--secondary-hover: #545b62;--text: #2c3e50;--text-light: #7f8c8d;--bg-light: #f8f9fa;--border: #dee2e6;--success: #28a745;padding:20px;height:auto;font-family:system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.5}.header.svelte-1ulmjhy{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #ecf0f1}h1.svelte-1ulmjhy{margin:0;font-size:1.5rem;font-weight:600}.content.svelte-1ulmjhy{text-align:center}.option-group.svelte-1ulmjhy{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}.option-btn.svelte-1ulmjhy{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px;background:#fff;border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:left}.option-btn.svelte-1ulmjhy:hover{background:var(--bg-light)}.option-btn.active.svelte-1ulmjhy{border-color:var(--primary);background:#f0f7ff}.badge.svelte-1ulmjhy{background:var(--primary);color:#fff;padding:4px 8px;border-radius:4px;font-size:.8rem;font-weight:600;white-space:nowrap}.btn-content.svelte-1ulmjhy{display:flex;flex-direction:column;gap:4px}.btn-title.svelte-1ulmjhy{font-weight:600;font-size:1.1rem}.btn-desc.svelte-1ulmjhy{color:var(--text-light);font-size:.9rem}.note.svelte-1ulmjhy{background:#fff3cd;color:#856404;padding:12px;border-radius:8px;font-size:.9rem;border:1px solid #ffeaa7}.instruction.svelte-1ulmjhy{background:#e3f2fd;color:#0c5460;padding:16px;border-radius:8px;margin-bottom:16px}.instruction.svelte-1ulmjhy p:where(.svelte-1ulmjhy){margin:0;font-size:1.1rem}.calibrate-wrapper.svelte-1ulmjhy{display:flex;flex-direction:column;gap:12px}.calibrate-panel.svelte-1ulmjhy{background:var(--bg-light);padding:16px;border-radius:12px;border:1px solid var(--border);animation:svelte-1ulmjhy-slideDown .2s ease-out}@keyframes svelte-1ulmjhy-slideDown{0%{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}.small-text.svelte-1ulmjhy{font-size:.85rem;color:var(--text-light);margin-top:8px}.calibrate-area.svelte-1ulmjhy{background:#e3f2fd;border:2px dashed #90caf9;border-radius:8px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:ns-resize;transition:all .2s;color:#1976d2;margin-bottom:16px}.calibrate-area.svelte-1ulmjhy:hover{background:#bbdefb;border-color:#64b5f6}.calibrate-icon.svelte-1ulmjhy{opacity:.8}.status.svelte-1ulmjhy{background:#fff;padding:16px;border-radius:8px;margin:16px 0;display:flex;flex-direction:column;gap:12px;border:1px solid var(--border)}.status-item.svelte-1ulmjhy{display:flex;justify-content:space-between;align-items:center}.label.svelte-1ulmjhy{font-weight:600;color:#495057}.value.svelte-1ulmjhy{font-family:monospace;background:#fff;padding:4px 8px;border-radius:4px;border:1px solid var(--border);font-size:1.1rem}.highlight.svelte-1ulmjhy{background:var(--success);color:#fff;border-color:var(--success)}.action-buttons.svelte-1ulmjhy{display:flex;justify-content:center;gap:12px}.btn.svelte-1ulmjhy{padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:500;color:#fff;font-size:1rem}.btn.primary.svelte-1ulmjhy{background:var(--primary)}.btn.primary.svelte-1ulmjhy:hover:not(:disabled){background:var(--primary-hover)}.btn.secondary.svelte-1ulmjhy{background:var(--secondary)}.btn.secondary.svelte-1ulmjhy:hover{background:var(--secondary-hover)}.btn.svelte-1ulmjhy:disabled{opacity:.6;cursor:not-allowed;background:#dee2e6;color:#6c757d}.repo-link.svelte-1ulmjhy{display:flex;align-items:center;justify-content:center;opacity:.6;transition:opacity .2s}.repo-link.svelte-1ulmjhy:hover{opacity:1}.repo-link.svelte-1ulmjhy img:where(.svelte-1ulmjhy){border-radius:50%} ");
+  e(" dialog.svelte-1p4edfu{padding:0;border:none;border-radius:16px;height:auto;max-height:90vh;width:90%;max-width:600px;overflow:auto;position:fixed;-webkit-user-select:none;user-select:none;box-shadow:0 0 10px #0000001a}dialog.svelte-1p4edfu:not([open]){display:none}dialog.svelte-1p4edfu::backdrop{background:#0009}.inner.svelte-1p4edfu{width:100%;height:auto;background:#fff;border-radius:16px}.inner.svelte-1p4edfu:focus{outline:none}@media (max-width: 768px){dialog.svelte-1p4edfu{width:95%;height:auto;max-height:95vh;border-radius:12px}.inner.svelte-1p4edfu{border-radius:12px}}main.svelte-xdgvle{--primary: #007bff;--primary-hover: #0056b3;--secondary: #6c757d;--secondary-hover: #545b62;--text: #2c3e50;--text-light: #7f8c8d;--bg-light: #f8f9fa;--border: #dee2e6;--success: #28a745;padding:20px;height:auto;font-family:system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.5}.header.svelte-xdgvle{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #ecf0f1}h1.svelte-xdgvle{margin:0;font-size:1.5rem;font-weight:600}.content.svelte-xdgvle{text-align:center}.option-group.svelte-xdgvle{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}.option-btn.svelte-xdgvle{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px;background:#fff;border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:left}.option-btn.svelte-xdgvle:hover{background:var(--bg-light)}.option-btn.active.svelte-xdgvle{border-color:var(--primary);background:#f0f7ff}.badge.svelte-xdgvle{background:var(--primary);color:#fff;padding:4px 8px;border-radius:4px;font-size:.8rem;font-weight:600;white-space:nowrap}.btn-content.svelte-xdgvle{display:flex;flex-direction:column;gap:4px}.btn-title.svelte-xdgvle{font-weight:600;font-size:1.1rem}.btn-desc.svelte-xdgvle{color:var(--text-light);font-size:.9rem}.note.svelte-xdgvle{background:#fff3cd;color:#856404;padding:12px;border-radius:8px;font-size:.9rem;border:1px solid #ffeaa7}.instruction.svelte-xdgvle{background:#e3f2fd;color:#0c5460;padding:16px;border-radius:8px;margin-bottom:16px}.instruction.svelte-xdgvle p:where(.svelte-xdgvle){margin:0;font-size:1.1rem}.calibrate-wrapper.svelte-xdgvle{display:flex;flex-direction:column;gap:12px}.calibrate-panel.svelte-xdgvle{background:var(--bg-light);padding:16px;border-radius:12px;border:1px solid var(--border);animation:svelte-xdgvle-slideDown .2s ease-out}@keyframes svelte-xdgvle-slideDown{0%{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}.small-text.svelte-xdgvle{font-size:.85rem;color:var(--text-light);margin-top:8px}.calibrate-area.svelte-xdgvle{background:#e3f2fd;border:2px dashed #90caf9;border-radius:8px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:ns-resize;transition:all .2s;color:#1976d2;margin-bottom:16px}.calibrate-area.svelte-xdgvle:hover{background:#bbdefb;border-color:#64b5f6}.calibrate-icon.svelte-xdgvle{opacity:.8}.status.svelte-xdgvle{background:#fff;padding:16px;border-radius:8px;margin:16px 0;display:flex;flex-direction:column;gap:12px;border:1px solid var(--border)}.status-item.svelte-xdgvle{display:flex;justify-content:space-between;align-items:center}.label.svelte-xdgvle{font-weight:600;color:#495057}.value.svelte-xdgvle{font-family:monospace;background:#fff;padding:4px 8px;border-radius:4px;border:1px solid var(--border);font-size:1.1rem}.highlight.svelte-xdgvle{background:var(--success);color:#fff;border-color:var(--success)}.action-buttons.svelte-xdgvle{display:flex;justify-content:center;gap:12px}.btn.svelte-xdgvle{padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:500;color:#fff;font-size:1rem}.btn.primary.svelte-xdgvle{background:var(--primary)}.btn.primary.svelte-xdgvle:hover:not(:disabled){background:var(--primary-hover)}.btn.secondary.svelte-xdgvle{background:var(--secondary)}.btn.secondary.svelte-xdgvle:hover{background:var(--secondary-hover)}.btn.svelte-xdgvle:disabled{opacity:.6;cursor:not-allowed;background:#dee2e6;color:#6c757d}.repo-link.svelte-xdgvle{display:flex;align-items:center;justify-content:center;opacity:.6;transition:opacity .2s}.repo-link.svelte-xdgvle:hover{opacity:1}.repo-link.svelte-xdgvle img:where(.svelte-xdgvle){border-radius:50%} ");
 
-  var _GM_getValue = (() => typeof GM_getValue != "undefined" ? GM_getValue : void 0)();
-  var _GM_info = (() => typeof GM_info != "undefined" ? GM_info : void 0)();
-  var _GM_registerMenuCommand = (() => typeof GM_registerMenuCommand != "undefined" ? GM_registerMenuCommand : void 0)();
-  var _GM_setValue = (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
-  const getMouseMinDelta = () => _GM_getValue("MOUSE_MIN", void 0);
-  const setMouseMinDelta = (number) => _GM_setValue("MOUSE_MIN", number);
-  const { name: scriptname, version: scriptversion } = _GM_info.script;
-  const log = (logMethod, tag, ...args) => {
-    const colors = {
-      log: "#2c3e50",
-      error: "#ff4500"
-    };
-    const fontFamily = "font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;";
-    console[logMethod](
-      `%c ${scriptname} %c v${scriptversion} %c ${tag} `,
-      `padding: 2px 6px; border-radius: 3px 0 0 3px; color: #fff; background: #FF6699; font-weight: bold; ${fontFamily}`,
-      `padding: 2px 6px; color: #fff; background: #FF9999; font-weight: bold; ${fontFamily}`,
-      `padding: 2px 6px; border-radius: 0 3px 3px 0; color: #fff; background: ${colors[logMethod]}; font-weight: bold; ${fontFamily}`,
-      ...args
-    );
-  };
-  const logger = {
-    log: (...args) => log("log", "日志", ...args),
-    error: (...args) => log("error", "错误", ...args)
-  };
-  let MOUSE_MIN = getMouseMinDelta() || -1;
-  let container;
-  logger.log(MOUSE_MIN === -1 ? "简单模式" : "校准模式");
-  logger.log(`阈值: ${MOUSE_MIN}`);
-  const updateMouseMinDelta = (val) => {
-    MOUSE_MIN = val ?? -1;
-    logger.log(`更新阈值: ${MOUSE_MIN}`);
-  };
-  const isFullScreen = () => {
-    if (!container) container = player.getElements().container;
-    return !!document.fullscreenElement || container.dataset.screen === "web";
-  };
-  const isTrackpad = (wheelEvent) => {
-    if (MOUSE_MIN === -1) return Math.abs(wheelEvent.deltaY) < 100;
-    return Math.abs(wheelEvent.deltaY) != MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2);
-  };
-  const orgin = EventTarget.prototype.addEventListener;
-  const applyHandler = (target, thisArg, args) => {
-    const [type, evt, ...rest] = args;
-    if (thisArg instanceof HTMLElement || !(evt instanceof Function) || type !== "mousewheel" && type !== "wheel") return Reflect.apply(target, thisArg, args);
-    const evtWrapper = (e) => {
-      try {
-        if (!isFullScreen() || !isTrackpad(e)) return Reflect.apply(evt, thisArg, [e]);
-        const proxy2 = new Proxy(e, {
-          get: (obj, prop) => typeof prop === "symbol" || prop !== "wheelDelta" ? Reflect.get(obj, prop) : Reflect.get(obj, "deltaY") * 10
-});
-        return Reflect.apply(evt, thisArg, [proxy2]);
-      } catch (error) {
-        logger.error("Wheel 事件处理失败:", error);
-        return Reflect.apply(evt, thisArg, [e]);
-      }
-    };
-    return Reflect.apply(target, thisArg, [type, evtWrapper, ...rest]);
-  };
-  const setupHook = () => {
-    try {
-      EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler });
-      logger.log("Hook 成功");
-    } catch (error) {
-      logger.error("Hook 失败:", error);
-    }
-  };
   const DEV = false;
   var is_array = Array.isArray;
   var index_of = Array.prototype.indexOf;
@@ -2839,6 +2772,47 @@ context.l
     ((window.__svelte ??= {}).v ??= new Set()).add(PUBLIC_VERSION);
   }
   enable_legacy_mode_flag();
+  var _GM_getValue = (() => typeof GM_getValue != "undefined" ? GM_getValue : void 0)();
+  var _GM_info = (() => typeof GM_info != "undefined" ? GM_info : void 0)();
+  var _GM_registerMenuCommand = (() => typeof GM_registerMenuCommand != "undefined" ? GM_registerMenuCommand : void 0)();
+  var _GM_setValue = (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
+  const getMouseMinDelta = () => _GM_getValue("MOUSE_MIN", void 0);
+  const setMouseMinDelta = (number) => _GM_setValue("MOUSE_MIN", number);
+  const { name: scriptname, version: scriptversion } = _GM_info.script;
+  const log = (logMethod, tag, ...args) => {
+    const colors = {
+      log: "#2c3e50",
+      error: "#ff4500"
+    };
+    const fontFamily = "font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;";
+    console[logMethod](
+      `%c ${scriptname} %c v${scriptversion} %c ${tag} `,
+      `padding: 2px 6px; border-radius: 3px 0 0 3px; color: #fff; background: #FF6699; font-weight: bold; ${fontFamily}`,
+      `padding: 2px 6px; color: #fff; background: #FF9999; font-weight: bold; ${fontFamily}`,
+      `padding: 2px 6px; border-radius: 0 3px 3px 0; color: #fff; background: ${colors[logMethod]}; font-weight: bold; ${fontFamily}`,
+      ...args
+    );
+  };
+  const logger = {
+    log: (...args) => log("log", "日志", ...args),
+    error: (...args) => log("error", "错误", ...args)
+  };
+  let MOUSE_MIN = getMouseMinDelta() || -1;
+  let container;
+  logger.log(MOUSE_MIN === -1 ? "简单模式" : "校准模式");
+  logger.log(`阈值: ${MOUSE_MIN}`);
+  const updateMouseMinDelta = (val) => {
+    MOUSE_MIN = val ?? -1;
+    logger.log(`更新阈值: ${MOUSE_MIN}`);
+  };
+  const isFullScreen = () => {
+    if (!container) container = player.getElements().container;
+    return !!document.fullscreenElement || container.dataset.screen === "web";
+  };
+  const isTrackpad = (wheelEvent) => {
+    if (MOUSE_MIN === -1) return Math.abs(wheelEvent.deltaY) < 100;
+    return Math.abs(wheelEvent.deltaY) !== MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2);
+  };
   var root = from_html(`<div><dialog class="svelte-1p4edfu"><div class="inner svelte-1p4edfu"><!></div></dialog></div>`);
   function Popup($$anchor, $$props) {
     push($$props, false);
@@ -2884,13 +2858,13 @@ context.l
     bind_prop($$props, "closeModal", closeModal);
     return pop($$exports);
   }
-  var root_3 = from_html(`<span class="badge svelte-1ulmjhy">已启用</span>`);
-  var root_2 = from_html(`<button><div class="btn-content svelte-1ulmjhy"><span class="btn-title svelte-1ulmjhy">简单模式</span> <span class="btn-desc svelte-1ulmjhy">默认 deltaY &lt; 100 为触控板</span></div> <!></button>`);
-  var root_7 = from_html(`<span class="badge svelte-1ulmjhy">已启用</span>`);
-  var root_4 = from_html(`<button><div class="btn-content svelte-1ulmjhy"><span class="btn-title svelte-1ulmjhy">校验模式</span> <span class="btn-desc svelte-1ulmjhy"><!></span></div> <!></button>`);
-  var root_8 = from_html(`<div class="calibrate-panel svelte-1ulmjhy"><div class="instruction svelte-1ulmjhy"><p class="svelte-1ulmjhy">请使用<strong>最小刻度</strong>滚动<strong>鼠标滚轮</strong></p> <p class="small-text svelte-1ulmjhy">请不要快速连续滚动，优先选择大多数情况下出现的最小整数值。</p></div> <div class="calibrate-area svelte-1ulmjhy"><div class="calibrate-icon svelte-1ulmjhy"><svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M12 2C8.69 2 6 4.69 6 8v8c0 3.31 2.69 6 6 6s6-2.69 6-6V8c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4v8c0 2.21-1.79 4-4 4s-4-1.79-4-4V8c0-2.21 1.79-4 4-4zm-1 2v4h2V6h-2z"></path></svg></div> <span>在此区域滚动鼠标滚轮</span></div> <div class="status svelte-1ulmjhy"><div class="status-item svelte-1ulmjhy"><span class="label svelte-1ulmjhy">最小 deltaY 绝对值:</span> <span class="value highlight svelte-1ulmjhy"> </span></div> <div class="status-item svelte-1ulmjhy"><span class="label svelte-1ulmjhy">当前值:</span> <span class="value svelte-1ulmjhy"> </span></div></div> <div class="action-buttons svelte-1ulmjhy"><button class="btn secondary svelte-1ulmjhy">取消</button> <button class="btn secondary svelte-1ulmjhy">重置</button> <button class="btn primary svelte-1ulmjhy">确定</button></div></div>`);
-  var root_1 = from_html(`<main class="svelte-1ulmjhy"><div class="header svelte-1ulmjhy"><h1 class="svelte-1ulmjhy">BiliScrollReverser</h1> <a href="https://github.com/maxchang3/BiliScrollReverser" target="_blank" rel="noopener noreferrer" class="repo-link svelte-1ulmjhy" title="Github"><img src="https://github.com/favicon.ico" alt="GitHub" width="24" height="24" class="svelte-1ulmjhy"/></a></div> <div class="content svelte-1ulmjhy"><div class="option-group svelte-1ulmjhy"><!> <div class="calibrate-wrapper svelte-1ulmjhy"><!> <!></div></div> <div class="note svelte-1ulmjhy"><strong>注意：</strong>如果鼠标滚动均为整数值，建议选择简单模式</div></div></main>`);
-  function Init($$anchor, $$props) {
+  var root_3 = from_html(`<span class="badge svelte-xdgvle">已启用</span>`);
+  var root_2 = from_html(`<button><div class="btn-content svelte-xdgvle"><span class="btn-title svelte-xdgvle">简单模式</span> <span class="btn-desc svelte-xdgvle">默认 deltaY &lt; 100 为触控板</span></div> <!></button>`);
+  var root_7 = from_html(`<span class="badge svelte-xdgvle">已启用</span>`);
+  var root_4 = from_html(`<button><div class="btn-content svelte-xdgvle"><span class="btn-title svelte-xdgvle">校验模式</span> <span class="btn-desc svelte-xdgvle"><!></span></div> <!></button>`);
+  var root_8 = from_html(`<div class="calibrate-panel svelte-xdgvle"><div class="instruction svelte-xdgvle"><p class="svelte-xdgvle">请使用<strong>最小刻度</strong>滚动<strong>鼠标滚轮</strong></p> <p class="small-text svelte-xdgvle">请不要快速连续滚动，优先选择大多数情况下出现的最小整数值。</p></div> <div class="calibrate-area svelte-xdgvle"><div class="calibrate-icon svelte-xdgvle"><svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M12 2C8.69 2 6 4.69 6 8v8c0 3.31 2.69 6 6 6s6-2.69 6-6V8c0-3.31-2.69-6-6-6zm0 2c2.21 0 4 1.79 4 4v8c0 2.21-1.79 4-4 4s-4-1.79-4-4V8c0-2.21 1.79-4 4-4zm-1 2v4h2V6h-2z"></path></svg></div> <span>在此区域滚动鼠标滚轮</span></div> <div class="status svelte-xdgvle"><div class="status-item svelte-xdgvle"><span class="label svelte-xdgvle">最小 deltaY 绝对值:</span> <span class="value highlight svelte-xdgvle"> </span></div> <div class="status-item svelte-xdgvle"><span class="label svelte-xdgvle">当前值:</span> <span class="value svelte-xdgvle"> </span></div></div> <div class="action-buttons svelte-xdgvle"><button class="btn secondary svelte-xdgvle">取消</button> <button class="btn secondary svelte-xdgvle">重置</button> <button class="btn primary svelte-xdgvle">确定</button></div></div>`);
+  var root_1 = from_html(`<main class="svelte-xdgvle"><div class="header svelte-xdgvle"><h1 class="svelte-xdgvle">BiliScrollReverser</h1> <a href="https://github.com/maxchang3/BiliScrollReverser" target="_blank" rel="noopener noreferrer" class="repo-link svelte-xdgvle" title="Github"><img src="https://github.com/favicon.ico" alt="GitHub" width="24" height="24" class="svelte-xdgvle"/></a></div> <div class="content svelte-xdgvle"><div class="option-group svelte-xdgvle"><!> <div class="calibrate-wrapper svelte-xdgvle"><!> <!></div></div> <div class="note svelte-xdgvle"><strong>注意：</strong>如果鼠标滚动均为整数值，建议选择简单模式</div></div></main>`);
+  function Config($$anchor, $$props) {
     push($$props, false);
     let openCalibrate = mutable_source(false);
     let minDelta = mutable_source(Infinity);
@@ -2959,7 +2933,7 @@ context.l
                   if (get(existingConfig) === -1) $$render(consequent);
                 });
               }
-              template_effect(() => set_class(button, 1, `option-btn ${get(existingConfig) === -1 ? "active" : ""}`, "svelte-1ulmjhy"));
+              template_effect(() => set_class(button, 1, `option-btn ${get(existingConfig) === -1 ? "active" : ""}`, "svelte-xdgvle"));
               event("click", button, () => {
                 setMinDelta(-1);
                 set(openCalibrate, false);
@@ -3003,7 +2977,7 @@ context.l
                   if (get(existingConfig) !== void 0 && get(existingConfig) !== -1) $$render(consequent_3);
                 });
               }
-              template_effect(() => set_class(button_1, 1, `option-btn ${get(existingConfig) !== void 0 && get(existingConfig) !== -1 || get(openCalibrate) ? "active" : ""}`, "svelte-1ulmjhy"));
+              template_effect(() => set_class(button_1, 1, `option-btn ${get(existingConfig) !== void 0 && get(existingConfig) !== -1 || get(openCalibrate) ? "active" : ""}`, "svelte-xdgvle"));
               event("click", button_1, startCalibrate);
               append($$anchor3, button_1);
             };
@@ -3059,6 +3033,33 @@ context.l
     bind_prop($$props, "show", show);
     return pop($$exports);
   }
+  const orgin = EventTarget.prototype.addEventListener;
+  const applyHandler = (target, thisArg, args) => {
+    const [type, evt, ...rest] = args;
+    if (thisArg instanceof HTMLElement || !(evt instanceof Function) || type !== "mousewheel" && type !== "wheel")
+      return Reflect.apply(target, thisArg, args);
+    const evtWrapper = (e) => {
+      try {
+        if (!isFullScreen() || !isTrackpad(e)) return Reflect.apply(evt, thisArg, [e]);
+        const proxy2 = new Proxy(e, {
+          get: (obj, prop) => typeof prop === "symbol" || prop !== "wheelDelta" ? Reflect.get(obj, prop) : Reflect.get(obj, "deltaY") * 10
+});
+        return Reflect.apply(evt, thisArg, [proxy2]);
+      } catch (error) {
+        logger.error("Wheel 事件处理失败:", error);
+        return Reflect.apply(evt, thisArg, [e]);
+      }
+    };
+    return Reflect.apply(target, thisArg, [type, evtWrapper, ...rest]);
+  };
+  const setupHook = () => {
+    try {
+      EventTarget.prototype.addEventListener = new Proxy(orgin, { apply: applyHandler });
+      logger.log("Hook 成功");
+    } catch (error) {
+      logger.error("Hook 失败:", error);
+    }
+  };
   let app = null;
   let appContainer = null;
   const registerMenus = () => {
@@ -3070,7 +3071,7 @@ context.l
       document.body.style.overflow = "hidden";
       appContainer = document.createElement("div");
       document.body.append(appContainer);
-      app = mount(Init, {
+      app = mount(Config, {
         target: appContainer
       });
     });
@@ -3080,7 +3081,7 @@ context.l
   if (getMouseMinDelta() === void 0) {
     window.onload = () => {
       document.body.style.overflow = "hidden";
-      mount(Init, {
+      mount(Config, {
         target: (() => {
           const app2 = document.createElement("div");
           document.body.append(app2);
