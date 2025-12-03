@@ -1,63 +1,59 @@
 <script lang="ts">
-    import Popup from "./Popup.svelte"
-    import { getMouseMinDelta, setMouseMinDelta } from "@/utils/data"
-    import { updateMouseMinDelta } from "@/utils/detect"
+import { getMouseMinDelta, setMouseMinDelta } from '@/utils/data'
+import { updateMouseMinDelta } from '@/utils/detect'
+import Popup from './Popup.svelte'
 
-    let openCalibrate = false
-    let minDelta: number = Infinity
-    let currentDelta: number, popup: Popup
-    let existingConfig = getMouseMinDelta()
+let openCalibrate = false
+let minDelta: number = Infinity
+let currentDelta: number, popup: Popup
+let existingConfig = getMouseMinDelta()
 
-    player.on("Player_Canplay", () => player.pause())
+player.on('Player_Canplay', () => player.pause())
 
-    export const show = () => {
-        existingConfig = getMouseMinDelta()
-        openCalibrate = false
+export const show = () => {
+    existingConfig = getMouseMinDelta()
+    openCalibrate = false
+    minDelta = Infinity
+    popup.showModal()
+}
+
+const setMinDelta = (delta: number) => {
+    if (delta === Infinity) {
         minDelta = Infinity
-        popup.showModal()
+        return
     }
+    setMouseMinDelta(delta)
+    updateMouseMinDelta(delta)
+    existingConfig = delta
+    openCalibrate = false
+}
 
-    const setMinDelta = (delta: number) => {
-        if (delta === Infinity) {
-            minDelta = Infinity
-            return
-        }
-        setMouseMinDelta(delta)
-        updateMouseMinDelta(delta)
-        existingConfig = delta
-        openCalibrate = false
-    }
+const startCalibrate = () => {
+    openCalibrate = true
+    minDelta = Infinity
+    currentDelta = 0
+}
 
-    const startCalibrate = () => {
-        openCalibrate = true
-        minDelta = Infinity
-        currentDelta = 0
-    }
+const cancelCalibrate = () => {
+    openCalibrate = false
+    minDelta = Infinity
+}
 
-    const cancelCalibrate = () => {
-        openCalibrate = false
-        minDelta = Infinity
-    }
+const calibrate = (e: WheelEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (!openCalibrate) return
+    const evt = e as WheelEvent
+    if (evt.deltaY !== 0 && Math.abs(evt.deltaY) < minDelta) minDelta = Math.abs(evt.deltaY)
+    currentDelta = evt.deltaY
+}
 
-    const calibrate = (e: WheelEvent) => {
-        e.preventDefault()
-        e.stopPropagation()
-        if (!openCalibrate) return
-        const evt = e as WheelEvent
-        if (evt.deltaY !== 0 && Math.abs(evt.deltaY) < minDelta)
-            minDelta = Math.abs(evt.deltaY)
-        currentDelta = evt.deltaY
+const isValid = (num: number | undefined, placeholder: string = '未设置') => {
+    if (num !== undefined && num !== Infinity) {
+        return num
     }
-
-    const isValid = (
-        num: number | undefined,
-        placeholder: string = "未设置"
-    ) => {
-        if (num !== undefined && num !== Infinity) {
-            return num
-        }
-        return placeholder
-    }
+    return placeholder
+}
 </script>
 
 <Popup bind:this={popup}>

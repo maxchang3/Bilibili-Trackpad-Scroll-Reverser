@@ -1,4 +1,4 @@
-import { GM_info } from "$"
+import { GM_info } from '$'
 
 type LogLevel = 'log' | 'error'
 

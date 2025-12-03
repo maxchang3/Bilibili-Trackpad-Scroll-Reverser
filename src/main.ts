@@ -1,8 +1,8 @@
-import { setupHook } from "@/hook"
-import { registerMenus } from "@/menu"
-import { getMouseMinDelta } from "@/utils/data"
+import { mount } from 'svelte'
 import App from '@/components/Config.svelte'
-import { mount } from "svelte"
+import { setupHook } from '@/hook'
+import { registerMenus } from '@/menu'
+import { getMouseMinDelta } from '@/utils/data'
 
 setupHook()
 registerMenus()
@@ -18,4 +18,3 @@ if (getMouseMinDelta() === undefined) {
         })
     }
 }
-

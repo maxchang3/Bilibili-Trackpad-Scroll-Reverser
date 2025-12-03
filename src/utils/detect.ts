@@ -1,5 +1,5 @@
-import { getMouseMinDelta } from "@/utils/data"
-import logger from "@/utils/logger"
+import { getMouseMinDelta } from '@/utils/data'
+import logger from '@/utils/logger'
 
 let MOUSE_MIN = getMouseMinDelta() || -1
 
@@ -15,10 +15,10 @@ export const updateMouseMinDelta = (val: number | undefined) => {
 
 export const isFullScreen = () => {
     if (!container) container = player.getElements().container
-    return !!(document.fullscreenElement) || container.dataset.screen === 'web'
+    return !!document.fullscreenElement || container.dataset.screen === 'web'
 }
 
 export const isTrackpad = (wheelEvent: WheelEvent) => {
     if (MOUSE_MIN === -1) return Math.abs(wheelEvent.deltaY) < 100
-    return (Math.abs(wheelEvent.deltaY) != MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2))
+    return Math.abs(wheelEvent.deltaY) !== MOUSE_MIN && Number.isInteger(wheelEvent.deltaY * 2)
 }

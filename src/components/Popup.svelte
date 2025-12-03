@@ -1,45 +1,45 @@
 <script lang="ts">
-    import { onMount } from "svelte"
-    
-    let dialog: HTMLDialogElement
-    
-    export const showModal = () => {
-        dialog.showModal()
-        // 防止背景滚动
-        document.body.style.overflow = 'hidden'
+import { onMount } from 'svelte'
+
+let dialog: HTMLDialogElement
+
+export const showModal = () => {
+    dialog.showModal()
+    // 防止背景滚动
+    document.body.style.overflow = 'hidden'
+}
+
+export const closeModal = () => {
+    dialog.close()
+    // 恢复背景滚动
+    document.body.style.overflow = ''
+}
+
+onMount(() => {
+    showModal()
+
+    const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+            e.preventDefault()
+            closeModal()
+        }
     }
-    
-    export const closeModal = () => {
-        dialog.close()
-        // 恢复背景滚动
-        document.body.style.overflow = ''
+
+    dialog.addEventListener('keydown', handleEscape)
+
+    const handleBackdropClick = (e: MouseEvent) => {
+        if (e.target === dialog) {
+            closeModal()
+        }
     }
-    
-    onMount(() => {
-        showModal()
-        
-        const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                e.preventDefault()
-                closeModal()
-            }
-        }
-        
-        dialog.addEventListener('keydown', handleEscape)
-        
-        const handleBackdropClick = (e: MouseEvent) => {
-            if (e.target === dialog) {
-                closeModal()
-            }
-        }
-        
-        dialog.addEventListener('click', handleBackdropClick)
-        
-        return () => {
-            dialog?.removeEventListener('keydown', handleEscape)
-            dialog?.removeEventListener('click', handleBackdropClick)
-        }
-    })
+
+    dialog.addEventListener('click', handleBackdropClick)
+
+    return () => {
+        dialog?.removeEventListener('keydown', handleEscape)
+        dialog?.removeEventListener('click', handleBackdropClick)
+    }
+})
 </script>
 
 <div>
