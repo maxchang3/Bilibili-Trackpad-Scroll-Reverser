@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@biomejs/biome':
+        specifier: ^2.3.8
+        version: 2.3.8
       '@maxchang/biome-config':
         specifier: ^0.1.7
         version: 0.1.7(@biomejs/biome@2.3.8)

@@ -12,7 +12,14 @@
     "preview": "vite preview",
     "release": "bumpp"
   },
+  "simple-git-hooks": {
+    "pre-commit": "pnpx lint-staged"
+  },
+  "lint-staged": {
+    "*": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+  },
   "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
     "@maxchang/biome-config": "^0.1.7",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@tsconfig/svelte": "^5.0.6",
@@ -26,11 +33,5 @@
     "typescript": "^5.9.3",
     "vite": "^7.2.6",
     "vite-plugin-monkey": "^7.1.5"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpx lint-staged"
-  },
-  "lint-staged": {
-    "*": "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
   }
 }
